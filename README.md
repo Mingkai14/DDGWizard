@@ -24,13 +24,13 @@ git clone https://github.com/Mingkai14/DDGWizard.git
 
   Your gcc version must be greater than 4.8.5 and conda version must be greater than 23.0.  
   
-  Do this:   
-  
-  Change prefix in environment.yml to your own location of conda envs folder.  
+  Do this:     
 
   cd Your_Path/DDGWizard/src/  
 
   vi environment.yml  
+
+  (Change prefix in environment.yml to your own location of conda envs folder.prefix: /Your/Conda/Path/envs/DDGWizard)  
   
   conda env create -f environment.yml  
   
