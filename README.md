@@ -264,8 +264,7 @@ There will be a output xls file in Your_Path/DDGWizard/Pred_Res/, recording pred
   --mode "model_only" mean only generate mutation models, "blast_only" mean only generate blast output files, "whole" mean completely process.
   
   You can generate features by separate sections. "model_only" and "blast_only" will gernerate and save files required by "whole". When run "whole",
-  if DDGWizard find you already have required files, it won't run "model_only" and "blast_only" again. So you can continuously run "model_only", "blast_only",   
-  "whole". 
+  if DDGWizard find you already have required files, it won't run "model_only" and "blast_only" again. So you can continuously run "model_only", "blast_only", "whole". 
 
   --process_num 4  
   Provide a number less than 200 and greater than 0. DDGWizard will calculate data in multi-process. 
