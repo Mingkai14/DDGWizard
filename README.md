@@ -79,14 +79,14 @@ git clone https://github.com/Mingkai14/DDGWizard.git
   cp mkdssp dssp
 
 ### (6). Configure R
-   You also need to configure R and install R package "Bio3D"
+   You also need to install R and R package "Bio3D"  
    (We assume you have already installed R)
    
    Do this:
    
    R 
    
-   >  install.packages("bio3d")
+   >install.packages("bio3d")
 
 ### (7). Make sure all files have run permission
   Do this:
