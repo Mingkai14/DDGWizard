@@ -30,7 +30,8 @@ git clone https://github.com/Mingkai14/DDGWizard.git
 
   vi environment.yml  
 
-  (Change prefix in environment.yml to your own location of conda envs folder.prefix: /Your/Conda/Path/envs/DDGWizard)  
+  (Change prefix in environment.yml to your own location of conda envs folder.  
+  prefix: /Your/Conda/Path/envs/DDGWizard)  
   
   conda env create -f environment.yml  
   
