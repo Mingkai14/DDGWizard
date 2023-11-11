@@ -59,7 +59,7 @@ git clone https://github.com/Mingkai14/DDGWizard.git
   
   Then modify Modeller conda config file to add license, which should be in:   
   
-  Your_Conda_Path/envs/Feature_Extraction/lib/modeller-10.4/modlib/modeller/config.py  
+  Your_Conda_Path/envs/DDGWizard/lib/modeller-10.4/modlib/modeller/config.py  
   
   Replace XXXX to your license, save and close.  
 
