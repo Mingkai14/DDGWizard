@@ -78,6 +78,7 @@ git clone https://github.com/Mingkai14/DDGWizard.git
   whereis mkdssp
   
   cd Your_Path_of_mkdssp
+  (should be /Your/Conda/Path/envs/DDGWizard/bin/)
   
   cp mkdssp dssp
 
