@@ -86,8 +86,8 @@ git clone https://github.com/Mingkai14/DDGWizard.git
    
    R 
    
-   >install.packages("bio3d")
-   (When you are installing DDGWizard on HPC, after adding R module, check if python module has been replaced (command: module list) (Some HPC systems may automatically replace other modules when loading certain modules). If it is, unload python module replaced by "module add R", make sure python and other libraries used are always from DDGWizard's conda virtual environment)
+   install.packages("bio3d")
+(When you are installing DDGWizard on HPC, after adding R module, check if python module has been replaced (command: module list) (Some HPC systems may automatically replace other modules when loading certain modules). If it is, unload python module replaced by "module add R", make sure python and other libraries used are always from DDGWizard's conda virtual environment)
 
 ### (7). Make sure all files have run permission
   Do this:
