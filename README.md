@@ -141,7 +141,7 @@ git clone https://github.com/Mingkai14/DDGWizard.git
   | 1SHG | /.../.../1SHG.pdb | Y57H |  A | 7 | 24.8 |
   | 1SHG | /.../.../1SHG.pdb | A56E |  A | 3.2 | 54 |
   
-     Name (Identify this protein with a name consisting of fewer than 8 characters, and duplication is allowed)  
+     Name (Identify this protein with a name consisting of fewer than 8 characters, and duplication is allowed but one name must only correspond to one pdb file)  
     
      PDB_File_Path (The file path of the PDB protein that you need to predict. This must be an absolute path.)  
     
