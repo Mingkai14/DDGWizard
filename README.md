@@ -153,6 +153,8 @@ git clone https://github.com/Mingkai14/DDGWizard.git
     
      T (Specify temperature)  
 
+     Do not include complete same data in your xls file.  
+
   There is a sample file in Your_Path/DDGWizard/src/sample_pred.xls  
   
   --db_folder_path   
