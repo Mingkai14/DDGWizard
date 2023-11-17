@@ -99,7 +99,9 @@ git clone https://github.com/Mingkai14/DDGWizard.git
   
   cd Your_Path/DDGWizard
   
-  chmod -R +x .
+  chmod -R +x .  
+
+  (Do not forget this step, otherwise the program will not run.)
   
 
 ## 2.Usage:
