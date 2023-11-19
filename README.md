@@ -95,10 +95,12 @@ git clone https://github.com/Mingkai14/DDGWizard.git
 
 ## 2.Usage:
 
-### (1). Tips
-  You must cd to the top folder of DDGWizard to run and make sure you are in DDGWizard virtual environment and finish environment preparation.
+### (1). Tips  
+#### a. You must cd to the top folder of DDGWizard to run and make sure you are in DDGWizard virtual environment and finish environment preparation.
 
-  DDGWizard itself supports multiprocessing. We recommend utilizing our built-in multiprocessing fuction. Avoid running multiple DDGWizard in the same time and in the same folder, as conflicts may arise when the program matches files. If you genuinely need to implement multiprocessing or multithreading for running DDGWizard by yourself, please make copies of the DDGWizard folder. Ensure that each instance of the DDGWizard program running in different processes/threads resides in a separate folder.
+#### b. DDGWizard itself supports multiprocessing. We recommend utilizing our built-in multiprocessing fuction. Avoid running multiple DDGWizard in the same time and in the same folder, as conflicts may arise when the program matches files. If you genuinely need to implement multiprocessing or multithreading for running DDGWizard by yourself, please make copies of the DDGWizard folder. Ensure that each instance of the DDGWizard program running in different processes/threads resides in a separate folder.  
+
+#### c. Avoid to place your files, such as data files, in the top folder of DDGWizard. The program will automatically clean up files in the top folder that are unrelated to the program. It is recommended to place them in ./src/  
 
 ### (2). Predict_ddG_Executable.py
 
@@ -116,7 +118,7 @@ git clone https://github.com/Mingkai14/DDGWizard.git
   --pred_dataset_path your_dataset.xls   
   --db_folder_path Your_Path/blast_db_folder/   
   --db_name db_name   
-  --if_reversed_data 1   
+  --if_reversed_data 0   
   --blast_process_num 4    
   --mode whole   
   --process_num 4  
