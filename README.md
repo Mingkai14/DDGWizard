@@ -150,6 +150,7 @@ git clone https://github.com/Mingkai14/DDGWizard.git
      Do not include complete same data in your xls file.  
 
   There is a sample file in Your_Path/DDGWizard/src/sample_pred.xls  
+  (If you want to perform predictions for saturation mutagenesis or full-site saturation mutagenesis, we recommend using our provided utility_tool.py script.)  
   
   --db_folder_path   
   Provide folder path of your blast database.   
