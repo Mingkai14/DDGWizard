@@ -298,16 +298,29 @@ There will be a output xls file in Your_Path/DDGWizard/Pred_Res/, recording pred
 ### (1)(2)
 ## 2.Usage:  
 ### (1). Description  
-  This script assist userss with saturation mutagenesis and full-site saturation mutagenesis requirements in quickly generating input files.  
+  This script assist userss with saturation mutagenesis and full-site saturation mutagenesis requirements in quickly preparing input files.  
 ### (2). Example
-  For saturation mutagenesis:  
-  python utility_tool.py --pdb_name Your_PDB_Name --pdb_path Your_PDB_Path --chain chain_site_located --site_number site_located_consistent_with_PDB_file --wt_aa Wild_Type_amino_acid --pH Your_pH --T Your Temperature  
+  For saturation mutagenesis, it will prepare data for the remaining 19 possible amino acid mutations based on the chain, site number, and wild-type amino acid you input, for next prediction:  
+  python utility_tool.py  
+  --pdb_name Your_PDB_Name   
+  --pdb_path Your_PDB_Path  
+  --chain chain_site_located  
+  --site_number site_located_consistent_with_PDB_file  
+  --wt_aa Wild_Type_amino_acid  
+  --pH Your_pH  
+  --T Your_Temperature  
 
-  For full-site saturation mutagenesis:  
-  python utility_tool.py --pdb_name Your_PDB_Name --pdb_path Your_PDB_Path --site_number all --pH Your_pH --T Your Temperature  
+  For full-site saturation mutagenesis, you don't need to input the chain and wild-type amino acid. Just type 'all' in the site number parameter, and it will prepare all possible mutation data for all sites across all chains:  
+  python utility_tool.py  
+  --pdb_name Your_PDB_Name   
+  --pdb_path Your_PDB_Path   
+  --site_number all   
+  --pH Your_pH   
+  --T Your_Temperature  
+  
 ### (3). Output
-  It will generate pred.xls in ./src/  
-
+  It will generate pred.xls in ./src/ including whole data wait to predict.  
+  Then you can use like 'python Predict_ddG_Executable.py --pred_dataset_path ./src/pred.xls --db_folder_path Your_Path/blast_db_folder/ --db_name your_db_name --if_reversed_data 0 --blast_process_num 4 --mode whole --process_num 4' to perform the prediction.  
 
 
 
