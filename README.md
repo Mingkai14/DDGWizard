@@ -2,7 +2,7 @@
 
   DDGWizard is a software pipeline for prediction of the changes in protein thermostability (ΔΔG/ddG) upon point mutation, based on optimized feature space and data science process. DDGWizard continuously calls a series of software to extract features, then carries out RFE (Recursive Feature Elimination) feature selection and XGBoost machine learning. DDWizard generates HRMs (Hypothetical Reverse Mutations) involving in training to enhance prediction ability on both forward and reverse mutations, and according to benchmarking, it has achieved superior or comparable predictive performance to state-of-the-art algorithms. DDGWizard supports multi-process handling to meet the needs of large-scale computations, and its generation of 1547 relevant features makes it an equally effective tool for protein thermodynamic characterization.  
   
-DDGWizard has two parts: A. Prediction part, for predicting ddG. B. Characterization part, for generating feature set to describe protein thermodynamics. Additionally, we provided a script to assist users with saturation mutagenesis and full-site saturation mutagenesis requirements in quickly preparing input file.   
+DDGWizard has two parts: A. Prediction part, for predicting ddG. B. Characterization part, for generating feature set to describe protein thermodynamics. Additionally, we provided a script to assist users with prediction requirements of saturation mutagenesis or full-site saturation mutagenesis in quickly preparing input file.   
 
 They have different useages:   
 
@@ -298,7 +298,7 @@ There will be a output xls file in Your_Path/DDGWizard/Pred_Res/, recording pred
 ### (1)(2)
 ## 2.Usage:  
 ### (1). Description  
-  This script assist userss with saturation mutagenesis and full-site saturation mutagenesis requirements in quickly preparing input files.  
+  This script assists userss with prediction requirements of saturation mutagenesis and full-site saturation mutagenesis in quickly preparing input files.  
 ### (2). Example
   For saturation mutagenesis, it will prepare data for the remaining 19 possible amino acid mutations based on the chain, site number, and wild-type amino acid you input, for next prediction:  
   python utility_tool.py  
