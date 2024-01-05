@@ -47,7 +47,7 @@ Ring_Path='./bin/ring-3.0.0/ring/bin/'
 
 FoldX_Path='./bin/FoldX_5.0/'
 
-FoldX_Name='foldx_20231231'
+FoldX_Name='foldx_20241231'
 
 Rdkit_Path='./bin/rdkit_2023_3_1/'
 
