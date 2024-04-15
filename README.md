@@ -20,7 +20,7 @@ DDGWizard mainly has two parts: A. prediction part for predicting ΔΔG. B. char
 
 Additionally, we provided a script to assist users with requirements of virtual screening for saturation mutagenesis or full-site saturation mutagenesis.     
 
-The usages of these parts:  
+The usages of these parts are:  
 
 # A. Prediction Part
 
