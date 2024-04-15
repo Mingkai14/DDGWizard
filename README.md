@@ -4,7 +4,7 @@ Thermostability is an important property of proteins and increasing protein ther
 </p>
 
 # Reference
-<p align="justify">
+
 [1] Marabotti A, Scafuri B, Facchiano A. Predicting the stability of mutant proteins by computational approaches: an overview[J]. Briefings in Bioinformatics, 2021, 22(3): bbaa074.  
 [2] Fang J. A critical review of five machine learning-based algorithms for predicting protein stability changes upon mutation[J]. Briefings in bioinformatics, 2020, 21(4): 1285-1292.  
 [3] Benevenuta S, Pancotti C, Fariselli P, et al. An antisymmetric neural network to predict free energy changes in protein variants[J]. Journal of Physics D: Applied Physics, 2021, 54(24): 245403.  
@@ -14,15 +14,15 @@ Thermostability is an important property of proteins and increasing protein ther
 [7] Pires D E V, Ascher D B, Blundell T L. DUET: a server for predicting effects of mutations on protein stability using an integrated computational approach[J]. Nucleic acids research, 2014, 42(W1): W314-W319.  
 [8] Pires D E V, Ascher D B, Blundell T L. mCSM: predicting the effects of mutations in proteins using graph-based signatures[J]. Bioinformatics, 2014, 30(3): 335-342.  
 [9] Pandurangan A P, Ochoa-Montano B, Ascher D B, et al. SDM: a server for predicting effects of mutations on protein stability[J]. Nucleic acids research, 2017, 45(W1): W229-W235.  
-</p>
+
 # Usages:
-<p align="justify">
+
 DDGWizard mainly has two parts: A. prediction part for predicting ΔΔG. B. characterization part for generating ΔΔG feature set.   
 
 Additionally, we provided a script to assist users with requirements of virtual screening for saturation mutagenesis or full-site saturation mutagenesis.     
 
 The usages of these parts are:  
-</p>
+
 # A. Prediction Part
 
 ## 1. Environment preparation steps
