@@ -939,6 +939,8 @@ def Clean_Main_Directory():
             continue
         if file.split('.')[len(file.split('.'))-1]=='py':
             continue
+        if os.path.basename(file).startswith('.'):
+            continue
         os.remove(file)
 
 
@@ -1248,8 +1250,10 @@ def Read_Pred_XLS(Raw_Dataset_File):
             error_obj.Something_Wrong(Read_Pred_XLS.__name__, 'check pred_dataset, pdb file is not existed')
             exit(1)
         if not os.path.isabs(row[1]):
-            error_obj.Something_Wrong(Read_Pred_XLS.__name__, 'path of pdb must be abs path')
-            exit(1)
+            row[1] = os.path.abspath(row[1])
+            if not os.path.exists(row[1]):
+                error_obj.Something_Wrong(Read_Pred_XLS.__name__, 'check pred_dataset, pdb file is not existed')
+                exit(1)
         if len(row[0])>8:
             error_obj.Something_Wrong(Read_Pred_XLS.__name__, 'name of protein is too long, should be less than 8')
             exit(1)
