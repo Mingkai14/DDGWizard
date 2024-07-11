@@ -77,9 +77,22 @@ the Prediction Part
 .. raw:: html
 
     <div style="text-align: justify;">
-    <p>Modify the prefix, which is on the last line. <b>Change the prefix to your local conda envs folder.</b></p>
+    <p>Modify the <span class="keyword-highlight">prefix</span>, <b>which is on the last line</b>. <b>Change the prefix to your local <span class="keyword-highlight">conda envs folder</span>.</b></p>
     <p></p>
-    <p>Then use Conda commands to create a Conda virtual environment and install dependencies. This may take some time.</p>
+    After changing, the <span class="keyword-highlight">prefix</span> should be <span class="keyword-highlight">prefix: <b>&lt;the path to your conda envs folder&gt;</b>/DDGWizard</span>.
+    <p></p>
+    If you don't know how to find the path to local <span class="keyword-highlight">conda envs folder</span>, you can use command:
+    <p></p>
+    </div>
+
+.. code-block::
+
+     $ conda info --envs
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    <p>Once you have changed the <span class="keyword-highlight">prefix</span> of <span class="keyword-highlight">environment.yml</span> file, you can use Conda commands to create a Conda virtual environment and install dependencies. This may take some time.</p>
     <p></p>
     </div>
 
@@ -100,13 +113,20 @@ the Prediction Part
    <p></p>
    Once you obtain the license of the Modeller, you need to input the license into installed Modeller's configuration file. You can find it under the <span class="keyword-highlight">Conda envs folder</span>.
    <p></p>
-   Enter your <span class="keyword-highlight">Conda envs folder</span>, and open the Modeller's configuration file:
+   Enter your local <span class="keyword-highlight">Conda envs folder</span>, and open the Modeller's configuration file:
    <p></p>
    </div>
 
-.. code-block::
+.. raw:: html
 
-     $ vi DDGWizard/lib/modeller-10.4/modlib/modeller/config.py
+    <div class="highlight-default notranslate">
+    <div class="highlight">
+    <pre style="overflow: scroll">
+    $ cd <b>&lt;the path to your conda envs folder&gt;</b>
+    $ vi DDGWizard/lib/modeller-10.4/modlib/modeller/config.py
+    </pre>
+    </div>
+    </div>
 
 .. raw:: html
 
@@ -123,13 +143,21 @@ the Prediction Part
     <p></p>
     Due to the version conflict issues, you must do operations below to make DSSP can be used of our program.
     <p></p>
-    Enter your <span class="keyword-highlight">Conda envs folder</span>, then enter <span class="keyword-highlight">bin folder</span>, and copy <span class="keyword-highlight">mkdssp</span> (a modified version of dssp) as <span class="keyword-highlight">dssp</span>:
+    Enter your local <span class="keyword-highlight">Conda envs folder</span>, then enter <span class="keyword-highlight">bin folder</span>, and copy <span class="keyword-highlight">mkdssp</span> (a modified version of dssp) as <span class="keyword-highlight">dssp</span>:
+    <p></p>
     </div>
 
-.. code-block::
+.. raw:: html
 
+    <div class="highlight-default notranslate">
+    <div class="highlight">
+    <pre style="overflow: scroll">
+    $ cd <b>&lt;the path to your conda envs folder&gt;</b>
     $ cd DDGWizard/bin/
     $ cp mkdssp dssp
+    </pre>
+    </div>
+    </div>
 
 .. raw:: html
 
@@ -197,7 +225,7 @@ the Characterization Part
     <p></p>
     Please check if the container image files <span class="keyword-highlight">myprof.tar</span> and <span class="keyword-highlight">myprof.sif</span> in the path <span class="keyword-highlight">DDGWizard/src/Prof_Source/</span> are complete. Since they are large files, managed by <a href="https://git-lfs.com/">the Git LFS</a>, sometimes they can not be downloaded completely.
     <p></p>
-    If they are not complete, please visit <a href="https://github.com/Mingkai14/DDGWizard/tree/latest7/src/Prof_Source">the DDGWizard GitHub website</a> to manually download them and replace them in the folder <span class="keyword-highlight">DDGWizard/src/Prof_Source/</span>.
+    If they are not complete, please visit <a href="https://github.com/Mingkai14/DDGWizard/tree/latest6/src/Prof_Source">the DDGWizard GitHub website</a> to manually download them and replace them in the folder <span class="keyword-highlight">DDGWizard/src/Prof_Source/</span>.
     <p></p>
     </div>
 
