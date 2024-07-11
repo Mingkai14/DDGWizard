@@ -118,6 +118,62 @@ Generate complete ΔΔG feature set
 .. raw:: html
 
     <div style="text-align: justify;">
+    (2). <span class="keyword-highlight">--db_folder_path</span>
+    This parameter indicates the folder path of the Blast database that you have prepared.
+    <p></p>
+    </div>
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    (3). <span class="keyword-highlight">--db_name</span>
+    This parameter indicates the name of the Blast database that you have prepared.
+    <p></p>
+    </div>
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    (4). <span class="keyword-highlight">--if_reversed_data</span>
+    This parameter requires you to provide a value of 0 or 1. The value of 0 means only predicting the ΔΔG for the mutations provided in the file, while the value of 1 means also predicting the ΔΔG for the reverse mutations of the mutations provided.
+    <p></p>
+    </div>
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    (5). <span class="keyword-highlight">--blast_process_num</span>
+    This parameter requires you to provide an integer greater than 0 and less than 200. It represents the number of processes (multiprocessing) DDGWizard will use for sequence alignment.
+    <p></p>
+    </div>
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    (6). <span class="keyword-highlight">--mode</span>
+    Please provide the default value <span class="keyword-highlight">whole</span>.
+    <p></p>
+    </div>
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    (7). <span class="keyword-highlight">--process_num</span>
+    This parameter requires you to provide an integer greater than 0 and less than 200. It represents the number of processes (multiprocessing) DDGWizard will use for calculating features (Different from sequence alignment).
+    <p></p>
+    </div>
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    (8). <span class="keyword-highlight">--container_type</span>
+    This parameter requires you to provide a value of <span class="keyword-highlight">D</span> or <span class="keyword-highlight">S</span>. The value of <span class="keyword-highlight">D</span> means using <span class="keyword-highlight">Docker</span> as container system, while the value of <span class="keyword-highlight">S</span> means using <span class="keyword-highlight">Singularity</span> as container system.
+    <p></p>
+    </div>
+
+.. raw:: html
+
+    <div style="text-align: justify;">
     <h4>3. Output</h4>
     There will be an output <span class="keyword-highlight">csv</span> file <span class="keyword-highlight">features_table.csv</span> located in <span class="keyword-highlight">DDGWizard/src/Features_Table/</span>, which will record complete generated features.
     <p></p>
