@@ -37,8 +37,8 @@ Generate complete ΔΔG feature set
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>1. Example template</h4>
-    <p>We first provide you with an example template of running DDGWizard to generate complete feature set, and then explain the specifics of each parameter in detail.</p>
+    <h4>1. Running template</h4>
+    <p>We first provide you with a running template of running DDGWizard to generate complete feature set, and then explain the specifics of each parameter in detail.</p>
     <p></p>
     You can run the program with (this program also requires the prepared Blast database):
     <p></p>
