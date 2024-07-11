@@ -11,7 +11,9 @@ The application program and source code have been published here, potentially pr
 
 # Document  
 
-Complete documentation is available on [ReadTheDocs](https://ddgwizard.readthedocs.io/en/latest/).
+Complete documentation is available on [![docs](https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square&?version=latest)](https://ddgwizard.readthedocs.io/en/latest/).
+
+It contains detailed installation guidelines and usage instructions.
 
 # Reference  
 
