@@ -24,7 +24,7 @@ Installation Guide
 .. raw:: html
 
     <div style="text-align: justify;">
-    DDGWizard mainly consists of two parts: the prediction part, used to predict ΔΔG, and the characterization part, which extracts features from the raw ΔΔG dataset to generate a feature set.
+    DDGWizard mainly consists of two parts: the prediction part, used to predict ΔΔG, and the characterization part, which generates complete feature set extracted from the raw ΔΔG dataset.
     <p></p>
     This section includes the installation guides for both parts.
     <p></p>
@@ -105,7 +105,7 @@ the Prediction Part
    <div style="text-align: justify;">
    <h4>3. Configure Modeller</h4>
    <p></p>
-   The Modeller is software used to generate mutation structures of PDB files.
+   The Modeller is software used to generate mutation structures of <span class="keyword-highlight">PDB</span> files.
    <p></p>
    It was already installed when creating Conda environment. But to allow our program to use it, you need to have a license of the Modeller and configure it.
    <p></p>
@@ -139,7 +139,7 @@ the Prediction Part
 
     <div style="text-align: justify;">
     <h4>4. Configure DSSP</h4>
-    The DSSP is software used to calculate the RSA (relative surface area) and secondary stuctures of PDB files.
+    The DSSP is software used to calculate the RSA (relative surface area) and secondary stuctures of <span class="keyword-highlight">PDB</span> files.
     <p></p>
     Due to the version conflict issues, you must do operations below to make DSSP can be used of our program.
     <p></p>
