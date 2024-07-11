@@ -197,7 +197,7 @@ the Characterization Part
     <p></p>
     Please check if the container image files <span class="keyword-highlight">myprof.tar</span> and <span class="keyword-highlight">myprof.sif</span> in the path <span class="keyword-highlight">DDGWizard/src/Prof_Source/</span> are complete. Since they are large files, managed by <a href="https://git-lfs.com/">the Git LFS</a>, sometimes they can not be downloaded completely.
     <p></p>
-    If they are not complete, please visit <a href="https://github.com/Mingkai14/DDGWizard/tree/latest6/src/Prof_Source">the DDGWizard GitHub website</a> to manually download them and replace them in the folder <span class="keyword-highlight">DDGWizard/src/Prof_Source/</span>.
+    If they are not complete, please visit <a href="https://github.com/Mingkai14/DDGWizard/tree/latest7/src/Prof_Source">the DDGWizard GitHub website</a> to manually download them and replace them in the folder <span class="keyword-highlight">DDGWizard/src/Prof_Source/</span>.
     <p></p>
     </div>
 
