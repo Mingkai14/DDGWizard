@@ -65,8 +65,6 @@ Predict ΔΔG of saturation mutagenesis
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>1. Example of running</h4>
-    <p>Similarly, we first provide two examples of running this program, followed by a detailed explanation of the program parameters. We selected the protein <span class="keyword-highlight">1SHG</span> from <span class="keyword-highlight">DDGWizard/src/pdbs/</span> as a case study.</p>
     <p></p>
     If you want to predict the ΔΔG of full-site saturation mutagenesis, you can run the program with:
     <p></p>
@@ -190,8 +188,3 @@ Predict ΔΔG of saturation mutagenesis
     </div>
     </div>
 
-.. raw:: html
-
-    <div style="text-align: justify;">
-    1. adding tips 2. finish sm 3. finish generate 3.1. supplement container of install 4. overall optimize 5. test by yourself
-    </div>
