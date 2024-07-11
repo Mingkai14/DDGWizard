@@ -77,8 +77,8 @@ Predict ΔΔG
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>2. Example template</h4>
-    <p>We first provide you with an example template of running DDGWizard to predict ΔΔG, and then explain the specifics of each parameter in detail.</p>
+    <h4>2. Running template</h4>
+    <p>We first provide you with a running template of running DDGWizard to predict ΔΔG, and then explain the specifics of each parameter in detail.</p>
     <p></p>
     You can run the program with:
     <p></p>
