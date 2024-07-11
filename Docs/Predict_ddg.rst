@@ -34,9 +34,9 @@ Predict ΔΔG
     <h4>1. Prepare a Blast database</h4>
     <p>A Blast database is required for the program to run. The program will use the path to the Blast database to invoke it and perform sequence alignment.</p>
     <p></p>
-    To construct a Blast database, you first need to prepare a fasta file of the protein sequence database.
+    To construct a Blast database, you first need to prepare a <span class="keyword-highlight">fasta</span> file of the protein sequence database.
     <p></p>
-    The richness of the sequence database will significantly impact the accuracy of the predictions. You can use your own fasta database file, but we recommend downloading it from <a href="https://ftp.uniprot.org/pub/databases/uniprot/uniref/">the Uniref</a>.
+    The richness of the sequence database will significantly impact the accuracy of the predictions. You can use your own <span class="keyword-highlight">fasta</span> database file, but we recommend downloading it from <a href="https://ftp.uniprot.org/pub/databases/uniprot/uniref/">the Uniref</a>.
     <p></p>
     Our program was tested using <a href="https://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref50/">the Uniref50 database</a>.
     <p></p>
@@ -50,9 +50,9 @@ Predict ΔΔG
 .. raw:: html
 
     <div style="text-align: justify;">
-    You can obtain a fasta file. Then you need to use Blast suite to create a Blast database using obtained fasta file.
+    You can obtain a <span class="keyword-highlight">fasta</span> file. Then you need to use Blast suite to create a Blast database using obtained <span class="keyword-highlight">fasta</span> file.
     <p></p>
-    There is an existing blast+ 2.13.0 program folder in our program. Please use the command as follows:
+    There is an existing <span class="keyword-highlight">blast+ 2.13.0</span> program folder in our program. Please use the command as follows:
     <p></p>
     </div>
 
@@ -172,7 +172,7 @@ Predict ΔΔG
 
     <div style="text-align: justify;">
     (4). <span class="keyword-highlight">--if_reversed_data</span>
-    This parameter requires you to provide a value of 0 or 1. A value of 0 means only predicting the ΔΔG for the mutations provided in the file, while a value of 1 means also predicting the ΔΔG for the reverse mutations of the mutations provided.
+    This parameter requires you to provide a value of 0 or 1. The value of 0 means only predicting the ΔΔG for the mutations provided in the file, while the value of 1 means also predicting the ΔΔG for the reverse mutations of the mutations provided.
     <p></p>
     </div>
 
@@ -195,7 +195,7 @@ Predict ΔΔG
 .. raw:: html
 
     <div style="text-align: justify;">
-    (5). <span class="keyword-highlight">--process_num</span>
+    (7). <span class="keyword-highlight">--process_num</span>
     This parameter requires you to provide an integer greater than 0 and less than 200. It represents the number of processes (multiprocessing) DDGWizard will use for calculating features (Different from sequence alignment).
     <p></p>
     </div>
