@@ -24,11 +24,11 @@ Predict ΔΔG of saturation mutagenesis
 .. raw:: html
 
     <div style="text-align: justify;">
-    This guide is intended to show users how to quickly use DDGWizard to predict ΔΔG of saturated mutations.
+    This guide is intended to show users how to quickly use DDGWizard to predict ΔΔG of saturated mutagenesis.
     <p></p>
     Saturation mutagenesis represents mutating the original amino acid residue at the same mutation site to all possible amino acids. In practical applications, users often require predicting the ΔΔG of saturation mutagenesis at one or all amino acid sites, thereby assessing which mutations may enhance thermostability of the protein based on a wide range of possibilities.
     <p></p>
-    To meet this practical user's need, we have prepared a program to help users quickly generate the needed <span class="keyword-highlight">xls</span> file of saturation mutagenesis. This file serves as input for DDGWizard to predict the ΔΔG of saturation mutagenesis.
+    To meet this practical user's need, we have prepared a program to help users quickly generate the needed <span class="keyword-highlight">xls</span> file for saturation mutagenesis. This file serves as input for DDGWizard to predict the ΔΔG of saturation mutagenesis.
     <p></p>
     </div>
 
@@ -38,7 +38,7 @@ Predict ΔΔG of saturation mutagenesis
     <h4>1. Running example</h4>
     <p>Similarly, we first provide two examples of running this program, followed by a detailed explanation of the program parameters. We selected the protein <span class="keyword-highlight">1SHG</span> from <span class="keyword-highlight">DDGWizard/src/pdbs/</span> as a case study.</p>
     <p></p>
-    If you want to predict the ΔΔG of saturation mutagenesis at a single site, you can run the program with:
+    If you want to predict the ΔΔG of saturation mutagenesis at a single site (e.g. number 57 amino acid site), you can run the program with:
     <p></p>
     <div>
 
