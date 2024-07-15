@@ -35,7 +35,7 @@ Installation Guide
 
 .. _`the Prediction Part`:
 
-the Prediction Part
+Prediction Part (for predicting ΔΔG)
 -------------------
 
 .. raw:: html
@@ -63,7 +63,7 @@ the Prediction Part
     <div style="text-align: justify;">
     <h4>2. Config and install conda virtual environment</h4>
     <p></p>
-    <p>There is a <span class="keyword-highlight">environment.yml</span> file at the path <span class="keyword-highlight">DDGWizard/src</span>, which is the Conda environment configuration file.</p>
+    <p>There is a <span class="keyword-highlight">environment.yml</span> file located in the path <span class="keyword-highlight">DDGWizard/src</span>, which is the Conda environment configuration file.</p>
     <p></p>
     <p>Open this file.</p>
     <p></p>
@@ -175,7 +175,7 @@ the Prediction Part
 
 .. _`the Characterization part`:
 
-the Characterization Part
+Characterization Part (for generating complete ΔΔG feature set)
 ----------------------------------------
 
 .. raw:: html
