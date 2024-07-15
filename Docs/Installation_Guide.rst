@@ -63,7 +63,7 @@ Prediction Part (for predicting ΔΔG)
     <div style="text-align: justify;">
     <h4>2. Config and install conda virtual environment</h4>
     <p></p>
-    <p>There is a <span class="keyword-highlight">environment.yml</span> file located in the path <span class="keyword-highlight">DDGWizard/src</span>, which is the Conda environment configuration file.</p>
+    <p>There is an <span class="keyword-highlight">environment.yml</span> file located in the path <span class="keyword-highlight">DDGWizard/src</span>, which is the Conda environment configuration file.</p>
     <p></p>
     <p>Open this file.</p>
     <p></p>
