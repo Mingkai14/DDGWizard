@@ -18,7 +18,7 @@
         }
     </style>
 
-Predict ΔΔG of saturation mutagenesis
+Predict ΔΔG of Saturation Mutagenesis
 ======================================
 
 .. raw:: html
