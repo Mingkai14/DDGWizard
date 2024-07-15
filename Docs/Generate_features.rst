@@ -1,4 +1,4 @@
-.. _Generate complete ΔΔG feature set:
+.. _Generate Complete ΔΔG Feature Set:
 
 .. raw:: html
 
@@ -18,7 +18,7 @@
         }
     </style>
 
-Generate complete ΔΔG feature set
+Generate Complete ΔΔG Feature Set
 ==================================
 
 .. raw:: html
