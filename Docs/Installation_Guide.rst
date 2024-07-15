@@ -35,7 +35,7 @@ Installation Guide
 
 .. _`the Prediction Part`:
 
-Prediction Part (for predicting ΔΔG)
+Prediction Part (for Predicting ΔΔG)
 -------------------
 
 .. raw:: html
@@ -175,7 +175,7 @@ Prediction Part (for predicting ΔΔG)
 
 .. _`the Characterization part`:
 
-Characterization Part (for generating complete ΔΔG feature set)
+Characterization Part (for Generating Complete ΔΔG Feature Set)
 ----------------------------------------
 
 .. raw:: html
