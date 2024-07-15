@@ -1,4 +1,4 @@
-.. _Predict ΔΔG of saturation mutagenesis:
+.. _Predict ΔΔG of Saturation Mutagenesis:
 
 .. raw:: html
 
