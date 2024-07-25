@@ -1,5 +1,6 @@
 import shutil
 
+import modeller
 from modeller import *
 from modeller.automodel import *
 import os
@@ -7,8 +8,10 @@ from Bio import SeqIO
 from scripts.Error import error_obj
 import multiprocessing
 import signal
+from scripts.Log import Log
 
 def Signal_Handler(sig, frame):
+    Log("Received signal to terminate.")
     print("Received signal to terminate.")
     os.kill(os.getpid(), signal.SIGTERM)
 
@@ -85,6 +88,7 @@ def Prepare_MUT_Models(table_path,table_name,mut_pdb_path,process_num:int):
         pool.close()
         pool.join()
     except Exception as e:
+        Log(e)
         print(e)
         os.chdir(original_directory)
         shutil.rmtree('./modeller_temp/')
@@ -118,6 +122,7 @@ def Prepare_MUT_Models(table_path,table_name,mut_pdb_path,process_num:int):
 
 
 def model_with_modeller(fasta,pdb,name,path):
+    modeller.log.none()
     query_seqres = SeqIO.parse(fasta, 'fasta')
     seq_dict = {}
     for chain in query_seqres:
@@ -129,15 +134,15 @@ def model_with_modeller(fasta,pdb,name,path):
                 ali.write(seq_dict[id]+'/')
             else:
                 ali.write(seq_dict[id]+'*')
-    with open('./' + name + '.ali', 'r') as ali:
-        print(ali.read())
+    # with open('./' + name + '.ali', 'r') as ali:
+    #     print(ali.read())
     with open(pdb,'r') as f:
         with open(f'./{name}_temp.pdb','w') as p:
             p.write(f.read())
     #Alignment
     env1 = Environ()
     aln = Alignment(env1)
-    print(list(seq_dict.keys()))
+    # print(list(seq_dict.keys()))
     mdl = Model(env1, file=f'./{name}_temp', model_segment=('FIRST:'+list(seq_dict.keys())[0], 'LAST:'+list(seq_dict.keys())[len(list(seq_dict.keys()))-1]))
     aln.append_model(mdl, align_codes=name + 'A', atom_files=f'./{name}_temp.pdb')
     aln.append(file='./'+name+'.ali', align_codes=name)

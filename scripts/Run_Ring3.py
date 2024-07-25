@@ -3,6 +3,7 @@ import os
 from scripts.Classes import Ring_Bond
 from scripts.Utils import amino_acid_map,Researched_Amino_Acid
 import shutil
+from scripts.Global_Value import Log_Path
 
 def Run_Ring(pdb_path,ring_bin_path,bond_list:list,temp_path,o_folder_name):
     '''
@@ -16,6 +17,15 @@ def Run_Ring(pdb_path,ring_bin_path,bond_list:list,temp_path,o_folder_name):
     :outpath:temp_path/o_folder_name/
     :process: Make saving path in TMP, call ring3 to run and read results to return
     '''
+    from scripts.Global_Value import Ring_Expired_Date
+    from datetime import datetime
+    now = datetime.now()
+    date_format = "%Y-%m-%d"
+    date_expired = datetime.strptime(Ring_Expired_Date,date_format)
+    left_days=(date_expired-now).days
+    if left_days<0:
+        error_obj.Something_Wrong(Run_Ring.__name__, 'The version of Ring has been expired. Please install the latest DDGWizard or use the latest Ring to replace current Ring program')
+        return False
     if not os.path.exists(pdb_path):
         error_obj.Is_Not_Existed(Run_Ring.__name__,pdb_path)
         return False
@@ -26,7 +36,7 @@ def Run_Ring(pdb_path,ring_bin_path,bond_list:list,temp_path,o_folder_name):
     if os.path.exists(temp_path+o_folder_name+'/'):
         shutil.rmtree(temp_path+o_folder_name+'/')
     os.mkdir(temp_path+o_folder_name+'/')
-    os.system(ring_bin_path+'ring -i '+pdb_path+' --out_dir '+temp_path+o_folder_name+'/')
+    os.system(ring_bin_path+'ring -i '+pdb_path+' --out_dir '+temp_path+o_folder_name+'/'+f' >> {Log_Path} 2>> {Log_Path}')
     count_dict = {'HBOND': 0, 'SSBOND': 0, 'IONIC': 0, 'VDW': 0, 'PICATION': 0, 'PIPISTACK': 0}
     try:
         with open(temp_path+o_folder_name+'/'+str(pdb_path).split('/')[len(str(pdb_path).split('/'))-1]+'_ringEdges','r') as edges:

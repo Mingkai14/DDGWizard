@@ -44,10 +44,13 @@ Is_Pred=0
 
 
 Ring_Path='./bin/ring-3.0.0/ring/bin/'
+Ring_Expired_Date='2033-05-04'
+
 
 FoldX_Path='./bin/FoldX_5.0/'
 
-FoldX_Name='foldx_20241231'
+FoldX_Name='foldx_20231231'
+FoldX_Expired_Date='2023-12-31'
 
 Rdkit_Path='./bin/rdkit_2023_3_1/'
 
@@ -92,3 +95,5 @@ Clean_Path='./bin/clean/'
 AAIndex1_Path='./src/AAindex/aaindex1'
 AAIndex2_Path='./src/AAindex/aaindex2'
 AAIndex3_Path='./src/AAindex/aaindex3'
+
+Log_Path='./src/log.txt'

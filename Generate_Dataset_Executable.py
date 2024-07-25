@@ -1,4 +1,7 @@
 import os
+import warnings
+warnings.filterwarnings("ignore")
+from scripts.Log import Log, Init_Log
 
 from scripts.Feature_Extracting import *
 from scripts.Run_Modeller import *
@@ -13,7 +16,7 @@ from scripts.Docker import Docker_Init_Container,Docker_Remove_Container
 
 
 if __name__ == '__main__':
-
+    Init_Log()
     parser = argparse.ArgumentParser(description='Input arguments')
 
     parser.add_argument('--raw_dataset_path', type=str, default='')
@@ -31,6 +34,7 @@ if __name__ == '__main__':
         error_obj.Something_Wrong(__name__,"Please cd to top folder of program!!!")
         exit(1)
 
+    Log('Processing input arguments')
     print('Processing input arguments')
     args = parser.parse_args()
     if args.raw_dataset_path=='' or args.db_folder_path=='' or args.db_name=='' or args.if_reversed_data not in [0,1] or args.blast_process_num<1 or args.blast_process_num>200 or args.process_num>200 or args.process_num<1:
@@ -61,44 +65,55 @@ if __name__ == '__main__':
     scripts.Global_Value.Mode = args.mode
     scripts.Global_Value.Process_Num = args.process_num
 
+    Log(f'Your input arguments:\n--raw_dataset_path:{scripts.Global_Value.Raw_Dataset_file}\n--db_folder_path:{scripts.Global_Value.MSA_DB_Path}\n--db_name:{scripts.Global_Value.MSA_DB_Name}\n--if_reversed_data:{scripts.Global_Value.Is_Use_Reverse_Data}\n--blast_process_num:{scripts.Global_Value.BLAST_Process_Num}\n--container_type:{scripts.Global_Value.D_or_S}\n--mode:{scripts.Global_Value.Mode}\n--process_num:{scripts.Global_Value.Process_Num}\n')
     print(f'Your input arguments:\n--raw_dataset_path:{scripts.Global_Value.Raw_Dataset_file}\n--db_folder_path:{scripts.Global_Value.MSA_DB_Path}\n--db_name:{scripts.Global_Value.MSA_DB_Name}\n--if_reversed_data:{scripts.Global_Value.Is_Use_Reverse_Data}\n--blast_process_num:{scripts.Global_Value.BLAST_Process_Num}\n--container_type:{scripts.Global_Value.D_or_S}\n--mode:{scripts.Global_Value.Mode}\n--process_num:{scripts.Global_Value.Process_Num}\n')
 
     if scripts.Global_Value.D_or_S=='D':
+        Log('Initing Docker')
         print('Initing Docker')
         Docker_Init_Container(Docker_Container_Name,Docker_Image_ID)
 
     try:
+        Log('Initing configuration')
         print('Initing configuration')
         Init()
 
+        Log('Reading raw dataset ')
         print('Reading raw dataset ')
         Raw_Data_List = Read_XLS(scripts.Global_Value.Raw_Dataset_file)
 
+        Log('Clearing folders')
         print('Clearing folders')
         Clean_All_Res_Folder(Table_Path,Features_Table_Path,Raw_PDB_Path,WT_PDB_Path,MUT_PDB_Path,WT_Fasta_Path,MUT_Fasta_Path,WT_PSSM_Data_Path,MUT_PSSM_Data_Path,WT_PSI_BLAST_Data_Path,MUT_PSI_BLAST_Data_Path,WT_BLASTP_Data_Path,MUT_BLASTP_Data_Path,[1,1,0,0,0,1,1,0,0,0,0,0,0])
 
+        Log('Preparing task table')
         print('Preparing task table')
         Prepare_Table(Raw_Data_List,Table_Path,Res_Table_Name,Clean_Path,Raw_PDB_Path,WT_PDB_Path,MUT_PDB_Path,WT_Fasta_Path,MUT_Fasta_Path,WT_PSSM_Data_Path,MUT_PSSM_Data_Path,WT_PSI_BLAST_Data_Path,MUT_PSI_BLAST_Data_Path)
 
 
         if scripts.Global_Value.Mode=='whole' or scripts.Global_Value.Mode=='model_only':
+            Log('Modelling MUT models')
             print('Modelling MUT models')
             Prepare_MUT_Models(Table_Path,Res_Table_Name,MUT_PDB_Path,scripts.Global_Value.Process_Num)
 
         if scripts.Global_Value.Mode=='whole' or scripts.Global_Value.Mode=='blast_only':
+            Log('Preparing Blast files')
             print('Preparing Blast files')
             Prepare_Blast_Files(Table_Path,Res_Table_Name,WT_PSSM_Data_Path,MUT_PSSM_Data_Path,WT_PSI_BLAST_Data_Path,MUT_PSI_BLAST_Data_Path,WT_BLASTP_Data_Path,MUT_BLASTP_Data_Path,scripts.Global_Value.MSA_DB_Path,scripts.Global_Value.MSA_DB_Name)
 
         if scripts.Global_Value.Mode=='whole' and scripts.Global_Value.Is_Use_Reverse_Data:
+            Log('Adding reverse task')
             print('Adding reverse task')
             Add_Reverse_Data(Table_Path,Res_Table_Name)
 
         if scripts.Global_Value.Mode=='whole':
             Feature_Object_List = []
 
+            Log('Beginning features extraction')
             print('Beginning features extraction')
             Feature_Extraction(Table_Path,Res_Table_Name,Feature_Object_List,scripts.Global_Value.Process_Num)
 
+            Log('Recording features results')
             print('Recording features results')
             if not Record_Feature_Table(Feature_Object_List,Features_Table_Path):
                 error_obj.Something_Wrong(__name__)
@@ -110,6 +125,7 @@ if __name__ == '__main__':
         exit(1)
 
     if scripts.Global_Value.D_or_S=='D':
+        Log('Removing Docker container')
         print('Removing Docker container')
         Docker_Remove_Container(Docker_Container_Name)
 
@@ -117,11 +133,13 @@ if __name__ == '__main__':
     Clean_Main_Directory()
 
 
+    Log('Cleaning temporary folder in ./src/TMP/')
     print('Cleaning temporary folder in ./src/TMP/')
     import shutil
     shutil.rmtree(TMP_Path)
     os.mkdir(TMP_Path)
 
+    Log('Have finished')
     print('Have finished')
     exit(0)
 

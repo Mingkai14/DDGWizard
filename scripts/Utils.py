@@ -6,6 +6,7 @@ import os
 from Bio import SeqIO
 from Bio.PDB import *
 
+from scripts.Log import Log
 import scripts.Global_Value
 from scripts.Error import error_obj
 from scripts.Classes import *
@@ -14,6 +15,7 @@ from bin.Protlego.Hydrophobic_cluster import *
 from math import sqrt,pow
 from scripts.Rosetta import Clean_PDB_by_Rosetta
 from scripts.Docker import Docker_Remove_Container
+from scripts.Global_Value import Log_Path
 
 
 
@@ -132,6 +134,7 @@ def Prepare_Table(Raw_Data_List,Table_Path,Res_Table_Name,Clean_Path,Raw_PDB_Pat
                 continue
             right_count += 1
 
+    Log(f'Preparing task table: There are whole {count} data in raw dataset, {wrong_count} data has been filter away and {right_count} data has been recorded')
     print(f'Preparing task table: There are whole {count} data in raw dataset, {wrong_count} data has been filter away and {right_count} data has been recorded')
     return True
 
@@ -858,6 +861,14 @@ def Run_FoldX(foldx_path,foldx_name,pdb_path,wt_aa,mut_aa,loc,chain_id,raw_dict:
               4. run FoldX and output in outpath
               5. Read results and fill output dict
     '''
+    from datetime import datetime
+    now = datetime.now()
+    date_format = "%Y-%m-%d"
+    date_expired = datetime.strptime(scripts.Global_Value.FoldX_Expired_Date,date_format)
+    left_days=(date_expired-now).days
+    if left_days<0:
+        error_obj.Something_Wrong(Run_FoldX.__name__, 'The version of FoldX has been expired. Please install the latest DDGWizard or use the latest FoldX to replace current FoldX program')
+        return False
     outpath=temp_path+o_folder_name+'/'
     if os.path.exists(outpath):
         shutil.rmtree(outpath)
@@ -872,7 +883,7 @@ def Run_FoldX(foldx_path,foldx_name,pdb_path,wt_aa,mut_aa,loc,chain_id,raw_dict:
             new_pdb.write(pdb.read())
 
     shutil.copy(f'{foldx_path}rotabase.txt', f'{outpath}rotabase.txt')
-    os.system(f'{foldx_path}{foldx_name} --command=BuildModel --pdb=temp.pdb --pdb-dir {outpath} --mutant-file={outpath}individual_list.txt --output-dir={outpath} --rotabaseLocation={outpath}rotabase.txt')
+    os.system(f'{foldx_path}{foldx_name} --command=BuildModel --pdb=temp.pdb --pdb-dir {outpath} --mutant-file={outpath}individual_list.txt --output-dir={outpath} --rotabaseLocation={outpath}rotabase.txt'+f' >> {Log_Path} 2>> {Log_Path}')
 
     files=os.listdir(outpath)
 
@@ -1006,7 +1017,7 @@ def Run_NMA(wt_pdb_path,mut_pdb_path,loc:int,chain_of_mut,seq_dict,NMA_path,NMA_
         shutil.rmtree(outpath)
     os.mkdir(outpath)
     try:
-        os.system(f'Rscript {NMA_path}{NMA_app_name} {wt_pdb_path} {mut_pdb_path} {loc} {NMA_path} {outpath}')
+        os.system(f'Rscript {NMA_path}{NMA_app_name} {wt_pdb_path} {mut_pdb_path} {loc} {NMA_path} {outpath}'+f' >> {Log_Path} 2>> {Log_Path}')
         with open(f'{outpath}/r_output.txt') as output:
                 div=output.readlines()[0].split()
                 #Clean_Main_Directory()
@@ -1016,7 +1027,7 @@ def Run_NMA(wt_pdb_path,mut_pdb_path,loc:int,chain_of_mut,seq_dict,NMA_path,NMA_
             Resave_PDB_One_Chain(wt_pdb_path,f'{outpath}/temp_single_chain_wt.pdb',chain_of_mut)
             Resave_PDB_One_Chain(mut_pdb_path, f'{outpath}/temp_single_chain_mut.pdb', chain_of_mut)
             single_loc=Fetch_Single_Chain_Loc(loc,seq_dict,chain_of_mut)
-            os.system(f'Rscript {NMA_path}{NMA_app_name} {outpath}/temp_single_chain_wt.pdb {outpath}/temp_single_chain_mut.pdb {single_loc} {NMA_path} {outpath}')
+            os.system(f'Rscript {NMA_path}{NMA_app_name} {outpath}/temp_single_chain_wt.pdb {outpath}/temp_single_chain_mut.pdb {single_loc} {NMA_path} {outpath}'+f' >> {Log_Path} 2>> {Log_Path}')
             with open(f'{outpath}/r_output.txt') as output:
                 div = output.readlines()[0].split()
                 # Clean_Main_Directory()
@@ -1169,6 +1180,7 @@ def Get_True_Loc(loc:int,aa_short,pdb_path,chain_id):
                         pass
 
     except:
+            Log(line)
             print(line)
             return False
     if not if_successful:

@@ -3,11 +3,13 @@ import pandas as pd
 import joblib
 import xlwt
 import scripts.Global_Value
+from scripts.Log import Log
 
 
 def load_pkl(filepath):  # load model of pkl format from filepath, and return data (model)
     with open(filepath, "rb") as fr:
         data = dill.load(fr, encoding="utf-8")
+    Log(f"[{filepath}] data loading...")
     print(f"[{filepath}] data loading...")
     return data
 
@@ -29,7 +31,9 @@ def XGBoostRegression_Predict(csv_path,model_path,output_path):
         for i in range(len(y_pred)):
             res_dict[ids[i]]=['forward',y_pred[i]]
 
+        Log(res_dict)
         print(res_dict)
+        Log(f'result saving in {output_path}')
         print(f'result saving in {output_path}')
         wb=xlwt.Workbook()
         ws=wb.add_sheet('sheet1')
@@ -74,7 +78,9 @@ def XGBoostRegression_Predict(csv_path,model_path,output_path):
                 else:
                     res_dict[ids[i]] = ['reverse', y_pred[i]]
 
+        Log(res_dict)
         print(res_dict)
+        Log(f'result saving in {output_path}')
         print(f'result saving in {output_path}')
         wb=xlwt.Workbook()
         ws=wb.add_sheet('sheet1')

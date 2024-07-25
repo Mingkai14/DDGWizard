@@ -1,3 +1,6 @@
+import warnings
+warnings.filterwarnings("ignore")
+from scripts.Log import Log, Init_Log
 import argparse
 import joblib
 import pandas as pd
@@ -14,6 +17,7 @@ from scripts.Record import Record_Feature_Table
 from ml.DDGWizard import XGBoostRegression_Predict
 
 if __name__ == '__main__':
+    Init_Log()
     parser = argparse.ArgumentParser(description='Input arguments')
 
     parser.add_argument('--pred_dataset_path', type=str, default='')
@@ -30,6 +34,7 @@ if __name__ == '__main__':
         error_obj.Something_Wrong(__name__,"Please cd to top folder of program!!!")
         exit(1)
 
+    Log('Processing input arguments')
     print('Processing input arguments')
 
     args = parser.parse_args()
@@ -69,31 +74,38 @@ if __name__ == '__main__':
     scripts.Global_Value.Process_Num = process_num
     scripts.Global_Value.Is_Pred=1
 
+    Log(f'Your input arguments:\n--pred_dataset_path:{pred_dataset_path}\n--db_folder_path:{scripts.Global_Value.MSA_DB_Path}\n--db_name:{scripts.Global_Value.MSA_DB_Name}\n--if_reversed_data:{scripts.Global_Value.Is_Use_Reverse_Data}\n--blast_process_num:{scripts.Global_Value.BLAST_Process_Num}\n--mode:{scripts.Global_Value.Mode}\n--process_num:{scripts.Global_Value.Process_Num}\n')
     print(f'Your input arguments:\n--pred_dataset_path:{pred_dataset_path}\n--db_folder_path:{scripts.Global_Value.MSA_DB_Path}\n--db_name:{scripts.Global_Value.MSA_DB_Name}\n--if_reversed_data:{scripts.Global_Value.Is_Use_Reverse_Data}\n--blast_process_num:{scripts.Global_Value.BLAST_Process_Num}\n--mode:{scripts.Global_Value.Mode}\n--process_num:{scripts.Global_Value.Process_Num}\n')
 
     try:
+        Log('Initing configuration')
         print('Initing configuration')
         Init()
 
+        Log('Reading pred dataset ')
         print('Reading pred dataset ')
         Pred_Data_List = Read_Pred_XLS(pred_dataset_path)
 
+        Log('Clearing')
         print('Clearing')
         files = os.listdir(Pred_Table_Path)
         for file in files:
             os.remove(Pred_Table_Path + file)
         Clean_All_Res_Folder(Table_Path,Features_Table_Path,Raw_PDB_Path,WT_PDB_Path,MUT_PDB_Path,WT_Fasta_Path,MUT_Fasta_Path,WT_PSSM_Data_Path,MUT_PSSM_Data_Path,WT_PSI_BLAST_Data_Path,MUT_PSI_BLAST_Data_Path,WT_BLASTP_Data_Path,MUT_BLASTP_Data_Path,[1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0])
 
+        Log('Preparing task table')
         print('Preparing task table')
         Prepare_Table(Pred_Data_List,Pred_Table_Path,Pred_Table_Name,Clean_Path,Raw_PDB_Path,WT_PDB_Path,MUT_PDB_Path,WT_Fasta_Path,MUT_Fasta_Path,WT_PSSM_Data_Path,MUT_PSSM_Data_Path,WT_PSI_BLAST_Data_Path,MUT_PSI_BLAST_Data_Path)
 
 
 
         if scripts.Global_Value.Mode=='whole' or scripts.Global_Value.Mode=='model_only':
+            Log('Modelling MUT models')
             print('Modelling MUT models')
             Prepare_MUT_Models(Pred_Table_Path,Pred_Table_Name,MUT_PDB_Path,process_num)
 
         if scripts.Global_Value.Mode=='whole' or scripts.Global_Value.Mode=='blast_only':
+            Log('Preparing Blast files')
             print('Preparing Blast files')
             Prepare_Blast_Files(Pred_Table_Path, Pred_Table_Name, WT_PSSM_Data_Path, MUT_PSSM_Data_Path,
                                 WT_PSI_BLAST_Data_Path, MUT_PSI_BLAST_Data_Path, WT_BLASTP_Data_Path,
@@ -101,24 +113,29 @@ if __name__ == '__main__':
                                 scripts.Global_Value.MSA_DB_Name)
 
         if scripts.Global_Value.Mode=='whole' and scripts.Global_Value.Is_Use_Reverse_Data:
+            Log('Adding reverse task')
             print('Adding reverse task')
             Add_Reverse_Data(Pred_Table_Path,Pred_Table_Name)
 
         if scripts.Global_Value.Mode == 'whole':
             Feature_Object_List = []
+            Log('Beginning features extraction')
             print('Beginning features extraction')
             Feature_Extraction(Pred_Table_Path, Pred_Table_Name, Feature_Object_List,scripts.Global_Value.Process_Num)
 
+            Log('Recording features results')
             print('Recording features results')
             if not Record_Feature_Table(Feature_Object_List, Features_Table_Path):
                 error_obj.Something_Wrong(__name__,'Recording failed')
                 exit(1)
 
+            Log('Computing ddG with XGB model')
             print('Computing ddG with XGB model')
             XGBoostRegression_Predict(Features_Table_Path+Features_Table_Name,Model_Path,Pred_Res_Path)
 
 
     except Exception as e:
+        Log(e)
         print(e)
         error_obj.Something_Wrong(__name__,'exception')
         Clean_with_Error(None)
@@ -129,11 +146,13 @@ if __name__ == '__main__':
     Clean_Main_Directory()
 
 
+    Log('Cleaning temporary folder in ./src/TMP/')
     print('Cleaning temporary folder in ./src/TMP/')
     import shutil
     shutil.rmtree(TMP_Path)
     os.mkdir(TMP_Path)
 
+    Log('Have finished')
     print('Have finished')
     exit(0)
 

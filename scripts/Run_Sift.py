@@ -3,6 +3,7 @@ from scripts.Global_Value import WT_MSA_Path
 from scripts.Utils import Fetch_Single_Chain_Loc
 # from Utils import Clean_Main_Directory
 from scripts.Caps import Trans_blast_2_fasta
+from scripts.Global_Value import Log_Path
 
 def Share_Aligned_File(name,seq_dict:dict,chain_id,in_path,out_path=WT_MSA_Path):
     files=os.listdir(out_path)
@@ -105,7 +106,7 @@ def Run_Sift(name,wt_aa,mut_aa,loc:int,sift_path,msa_path,seq_dict:dict,chain,bl
     Share_Aligned_File(name,seq_dict,chain,f'{outpath}blast_out.fasta',outpath)
     blimps_path=sift_path+'blimps/'
     sift_bin_path=sift_path+'bin/'
-    os.system(f'export BLIMPS_DIR={blimps_path} && {sift_bin_path}info_on_seqs {outpath}{name}.aln.fasta {outpath}/temp.subst {outpath}/temp.SIFTprediction')
+    os.system(f'export BLIMPS_DIR={blimps_path} && {sift_bin_path}info_on_seqs {outpath}{name}.aln.fasta {outpath}/temp.subst {outpath}/temp.SIFTprediction'+f' >> {Log_Path} 2>> {Log_Path}')
     with open(f'{outpath}/temp.SIFTprediction','r') as temp:
         lines=temp.readlines()
         line=''

@@ -7,8 +7,10 @@ import scripts.Global_Value
 import multiprocessing
 import shutil
 import signal
+from scripts.Log import Log
 
 def Signal_Handler(sig, frame):
+    Log("Received signal to terminate.")
     print("Received signal to terminate.")
     os.kill(os.getpid(), signal.SIGTERM)
 
