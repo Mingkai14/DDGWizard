@@ -1,17 +1,17 @@
 # DDGWizard
 
 **Background:**  
-Thermostability is an important property of proteins and increasing protein thermostability holds significant meaning in expanding the application scope of proteins. Until now, rational/semi-rational design combined with computational methods have become the widely used strategies to increase protein thermostability. Among combined computational methods, the ΔΔG prediction based on machine learning is popular[1], however, optimizing their insufficient accuracy remains a challenge[2].  
+Thermostability is an important property of proteins and a critical factor for their wide application. Until now, rational/semi-rational design combined with computational methods have become widely used strategies to increase protein thermostability. ΔΔG prediction methods based on machine learning are among these computational methods and have been widely proposed [1]. However, they still suffer from the issue of insufficient prediction performance [2]. The main reasons include that the features used for training models are insufficiently informative [2]. 
 
 **Characteristics:**  
-To achieve accurate ΔΔG prediction, DDGWizard has been developed. DDGWizard introduced a comprehensive feature set related to protein thermostability changes, including 1547 features from 5 types; DDGWizard incorporates a workflow to extract features from raw ΔΔG data, supporting data process in a large scale; DDGWizard carried out feature dimensionality reduction to find best feature combination; DDGWizard includes a machine learning model to predict ΔΔG, trained with best feature combination and newly integrated dataset. After model evaluation of DDGWizard and comparison with other representative ΔΔG predictive methods, DDGWizard acheived 0.79 Pearson correlation coefficient in cross-validation and 0.68 Pearson correlation coefficient on test set, outperforming other 7 ΔΔG predictive methods: ACDC-NN[3], DDGun3D[4], FoldX[5], DynaMut[6], DUET[7], mCSM[8], and SDM[9].  
+To conduct more sufficient feature engineering, we constructed a comprehensive ΔΔG feature set by integrating current ΔΔG feature resources and developed a feature extraction pipeline to extract features from raw ΔΔG data. Furthermore, feature dimensionality reduction was conducted to select the optimal features and develop a ΔΔG prediction model. The model showed notable performance, achieving an R-squared of 0.61 in cross-validation and outperformed other representative ΔΔG prediction methods (ACDC-NN[3], DDGun3D[4], FoldX[5], DynaMut[6], DUET[7], mCSM[8], and SDM[9]) in different comparisons. The developed feature extraction pipeline and ΔΔG prediction model constituted our new ΔΔG prediction system, named DDGWizard.
 
 **Purpose:**  
 The application program and source code have been published here, potentially prompting DDGWizard to become a useful resource for aiding rational design of protein thermostability.  
 
 # Document  
 
-Complete documentation is available on [![docs](https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square&?version=latest)](https://ddgwizard.readthedocs.io/en/latest/) ([ReadTheDocs](http://elaspic.readthedocs.io)).  
+Complete documentation is available on [![docs](https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square&?version=latest)](https://ddgwizard.readthedocs.io/en/latest/) ([ReadTheDocs](https://ddgwizard.readthedocs.io/en/latest/)).  
 
 It contains detailed installation guidelines and usage instructions.  
 
