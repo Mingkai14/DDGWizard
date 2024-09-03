@@ -228,4 +228,6 @@ Predict ΔΔG
     <p></p>
     (3). <b>Do not place your files in the top-level folder of DDGWizard.</b> DDGWizard will automatically clean files in the top-level folder to maintain multi-process synchronization.
     <p></p>
+    (4). <b>The complete log file is saved at the path <span class="keyword-highlight">DDGWizard/src/log.txt</span>.</b>
+    <p></p>
     </div>

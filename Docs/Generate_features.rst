@@ -1,4 +1,4 @@
-.. _Generate Complete ΔΔG Feature Set:
+.. _Generate ΔΔG Feature Set:
 
 .. raw:: html
 
@@ -18,7 +18,7 @@
         }
     </style>
 
-Generate Complete ΔΔG Feature Set
+Generate ΔΔG Feature Set
 ==================================
 
 .. raw:: html
@@ -26,7 +26,7 @@ Generate Complete ΔΔG Feature Set
     <div style="text-align: justify;">
     This guide is intended to show users how to use DDGWizard to generate complete feature set.
     <p></p>
-    After feature dimensionality reduction, the DDGWizard prediction program uses the optimal combination of features (69 features) derived from 1547 features to predict ΔΔG, without calculating all the features during running.
+    After feature dimensionality reduction, the DDGWizard prediction program uses the optimal 69 features derived from 1547 features to predict ΔΔG, without calculating all the features during running.
     <p></p>
     However, users might need the complete feature set. They may want to generate the full feature set to characterize and analyze the raw ΔΔG data, or use it for their own machine learning projects.
     <p></p>
@@ -100,13 +100,13 @@ Generate Complete ΔΔG Feature Set
     Description of attributes for each column in the table file:
     <div style="margin-left: 40px;">
     <p></p>
-    a. <span class="keyword-highlight">PDB</span>: This attribute requires to provide a <span class="keyword-highlight">PDB</span> identifier sourced from <a href="https://www.rcsb.org/">the RCSB database</a>. In the characterization part, the program does not support the use of user-provided <span class="keyword-highlight">PDB</span> files. Users need to provide a <span class="keyword-highlight">PDB</span> identifier that can be searched on <a href="https://www.rcsb.org/">the RCSB database</a> as the name of the predicted protein. The program will automatically download the <span class="keyword-highlight">PDB</span> file from <a href="https://www.rcsb.org/">the RCSB database</a> according to this <span class="keyword-highlight">PDB</span> ID.
+    a. <span class="keyword-highlight">PDB</span>: This attribute requires to provide a <span class="keyword-highlight">PDB</span> identifier sourced from <a href="https://www.rcsb.org/">the RCSB database</a>. In the feature extraction pipeline of DDGWizard, the program does not support the use of user-provided <span class="keyword-highlight">PDB</span> files. Users need to provide a <span class="keyword-highlight">PDB</span> identifier that can be searched on <a href="https://www.rcsb.org/">the RCSB database</a> as the name of the predicted protein. The program will automatically download the <span class="keyword-highlight">PDB</span> file from <a href="https://www.rcsb.org/">the RCSB database</a> according to this <span class="keyword-highlight">PDB</span> ID.
     <p></p>
     b. <span class="keyword-highlight">Variation</span>: Specify the specific mutation for which you want to generate features, including the mutation site information and amino acid substitution details.
     <p></p>
     c. <span class="keyword-highlight">Chain</span>: Specify the chain identifier of the protein where the specific mutation are located.
     <p></p>
-    d. <span class="keyword-highlight">ddG</span>: This attribute requires to provide the experimental ΔΔG values of the raw data. For users with machine learning needs, this value can serve as the regression target. If users only require the characterization of data features, this attribute can be set to any numerical value without affecting the generation of other features.
+    d. <span class="keyword-highlight">ddG</span>: This attribute requires to provide the experimental ΔΔG values of the raw data. For users with machine learning needs, this value can serve as the regression target. If users only require generating features, this attribute can be set to any numerical value without affecting the generation of other features.
     <p></p>
     e. <span class="keyword-highlight">pH</span>: Specify at which pH you want to predict the ΔΔG for the mutation. If you have no specific requirements or preferences regarding pH, you can simply specify it as 7.
     <p></p>
@@ -199,6 +199,8 @@ Generate Complete ΔΔG Feature Set
     If you need to run multiple instances at the same time by yourself, <b>please make multiple copies of the DDGWizard folder and run each instance separately in its own folder.</b>
     <p></p>
     (3). <b>Do not place your files in the top-level folder of DDGWizard.</b> DDGWizard will automatically clean files in the top-level folder to maintain multi-process synchronization.
+    <p></p>
+    (4). <b>The complete log file is saved at the path <span class="keyword-highlight">DDGWizard/src/log.txt</span>.</b>
     <p></p>
     </div>
 

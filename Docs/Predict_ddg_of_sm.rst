@@ -1,4 +1,4 @@
-.. _Predict ΔΔG of Saturation Mutagenesis:
+.. _Predict ΔΔG for Saturation Mutagenesis:
 
 .. raw:: html
 
@@ -18,13 +18,13 @@
         }
     </style>
 
-Predict ΔΔG of Saturation Mutagenesis
-======================================
+Predict ΔΔG for Saturation Mutagenesis
+=======================================
 
 .. raw:: html
 
     <div style="text-align: justify;">
-    This guide is intended to show users how to quickly use DDGWizard to predict ΔΔG of saturated mutagenesis.
+    This guide is intended to show users how to quickly use DDGWizard to predict ΔΔG for saturated mutagenesis.
     <p></p>
     Saturation mutagenesis represents mutating the original amino acid residue at the same mutation site to all possible amino acids. In practical applications, users often require predicting the ΔΔG of saturation mutagenesis at one or all amino acid sites, thereby assessing which mutations may enhance thermostability of the protein based on a wide range of possibilities.
     <p></p>

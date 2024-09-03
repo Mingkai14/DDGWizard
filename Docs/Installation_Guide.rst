@@ -24,7 +24,7 @@ Installation Guide
 .. raw:: html
 
     <div style="text-align: justify;">
-    DDGWizard mainly consists of two parts: the prediction part, used to predict ΔΔG, and the characterization part, which generates complete feature set extracted from the raw ΔΔG dataset.
+    DDGWizard mainly consists of two parts: the ΔΔG prediction program, used to predict ΔΔG, and the feature extraction pipeline, which generates complete feature set extracted from the raw ΔΔG dataset.
     <p></p>
     This section includes the installation guides for both parts.
     <p></p>
@@ -35,8 +35,8 @@ Installation Guide
 
 .. _`the Prediction Part`:
 
-Prediction Part (for Predicting ΔΔG)
-------------------------------------
+ΔΔG Prediction Program (for Predicting ΔΔG)
+--------------------------------------------
 
 .. raw:: html
 
@@ -182,15 +182,15 @@ Prediction Part (for Predicting ΔΔG)
 
 .. _`the Characterization part`:
 
-Characterization Part (for Generating Complete ΔΔG Feature Set)
----------------------------------------------------------------
+Feature Extraction Pipeline (for Generating ΔΔG Feature Set)
+-------------------------------------------------------------
 
 .. raw:: html
 
     <div style="text-align: justify;">
-    This installation guide is intended for users who aim to characterize raw ΔΔG data. It will output complete ΔΔG feature set for analysis or machine learning purposes.
+    This installation guide is intended for users who aim to extract features from raw ΔΔG data. It will output complete ΔΔG feature set for analysis or machine learning purposes.
     <p></p>
-    The characterization part requires additional prerequisites to meet the needs of calculation for complete feature set. The characterization part uses certain R-based packages and certain cross-platform software, thus requiring dependencies on the R language and the container system.
+    The feature extraction pipeline requires additional prerequisites to meet the needs of calculation for complete feature set. It uses certain R-based packages and certain cross-platform software, thus requiring dependencies on the R language and the container system.
     <p></p>
     <h4>Additional prerequisites:</h4>
     <span class=keyword-highlight>R</span>, <span class=keyword-highlight>Docker</span> or <span class=keyword-highlight>Singularity</span> (Only one container system is needed).
@@ -227,7 +227,7 @@ Characterization Part (for Generating Complete ΔΔG Feature Set)
 
     <div style="text-align: justify;">
     <h4>3. Download the container image files</h4>
-    The characterization part of DDGWizard will automatically call the container system to utilize the resources from the container image files. Before this, you need to download the container image files first.
+    The feature extraction pipeline of DDGWizard will automatically call the container system to utilize the resources from the container image files. Before this, you need to download the container image files first.
     <p></p>
     Please download the following two files: <span class="keyword-highlight">myprof.tar</span> (128MB) and <span class="keyword-highlight">myprof.sif</span> (360MB) from <a href="https://zenodo.org/records/12817843">https://zenodo.org/records/12817843</a>, and copy them to the path: <span class="keyword-highlight">DDGWizard/src/Prof_Source</span> within the DDGWizard program folder:
     <p></p>
@@ -248,9 +248,9 @@ Characterization Part (for Generating Complete ΔΔG Feature Set)
 
     <div style="text-align: justify;">
     <h4>4. Config container</h4>
-    Your Linux system needs to have at least one of the two container systems, <span class="keyword-highlight">Docker</span> or <span class="keyword-highlight">Singularity</span>, installed and configured in order for the characterization part of DDGWizard to run. You can download and install them from <a href="https://www.docker.com/">the official Docker websites</a> and <a href="https://sylabs.io/singularity/">the official Singularity websites</a>.
+    Your Linux system needs to have at least one of the two container systems, <span class="keyword-highlight">Docker</span> or <span class="keyword-highlight">Singularity</span>, installed and configured in order for the feature extraction pipeline of DDGWizard to run. You can download and install them from <a href="https://www.docker.com/">the official Docker websites</a> and <a href="https://sylabs.io/singularity/">the official Singularity websites</a>.
     <p></p>
-    You can choose one of <span class="keyword-highlight">Docker</span> or <span class="keyword-highlight">Singularity</span> to be used by the characterization part of DDGWizard. If you choose <span class="keyword-highlight">Docker</span>, you will need to perform an additional step:
+    You can choose one of <span class="keyword-highlight">Docker</span> or <span class="keyword-highlight">Singularity</span> to be used by the feature extraction pipeline. If you choose <span class="keyword-highlight">Docker</span>, you will need to perform an additional step:
     <p></p>
     </div>
 
