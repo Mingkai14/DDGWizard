@@ -7,7 +7,7 @@ Thermostability is an important property of proteins and a critical factor for t
 we integrated 12 computational resources to develop a pipeline capable of automatically calculating 1547 features. In addition, through data collection and application of our pipeline, the feature-enriched DDGWizard dataset was created, including 15752 ΔΔG data. Furthermore, we performed feature selection and developed an accurate ΔΔG prediction model that achieved an R² of 0.61 in cross-validation and outperformed several other representative prediction methods in comparisons. Together, the feature calculation pipeline, DDGWizard dataset, and prediction model constitute the DDGWizard system, freely available for ΔΔG analysis and prediction. 
 
 **Purpose:**  
-The application program and dataset of DDGWizard have been published here.  
+The application program of DDGWizard has been published here.  
 
 # Document  
 
