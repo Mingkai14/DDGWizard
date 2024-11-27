@@ -7,16 +7,16 @@ Introduction
 
    <b>Background:</b>
    <div style="text-align: justify;">
-   Thermostability is an important property of proteins and a critical factor for their wide application. Until now, rational/semi-rational design combined with computational methods have become widely used strategies to increase protein thermostability. ΔΔG prediction methods based on machine learning are among these computational methods and have been widely proposed [1]. However, they still suffer from the issue of insufficient prediction performance [2]. The main reasons include that the features used for training models are insufficiently informative [2].
+   Thermostability is an important property of proteins and a critical factor for their wide application. Accurate prediction of ΔΔG enables the estimation of the impact of mutations on thermostability in advance. A range of ΔΔG prediction methods has now emerged, especially those based on machine learning. However, their prediction performance remains limited due to insufficiently informative training features. So far, although many computational resources have been used to calculate ΔΔG features or output potentially relevant features, little effort has been made to integrate them for the comprehensive calculation.
    </div>
    <p></p>
    <b>Characteristics:</b>
    <div style="text-align: justify;">
-   To conduct more sufficient feature engineering, we constructed a comprehensive ΔΔG feature set by integrating current ΔΔG feature resources and developed a feature extraction pipeline to extract features from raw ΔΔG data. Furthermore, feature dimensionality reduction was conducted to select the optimal features and develop a ΔΔG prediction model. The model showed notable performance, achieving an R-squared of 0.61 in cross-validation and outperformed other representative ΔΔG prediction methods (ACDC-NN[3], DDGun3D[4], FoldX[5], DynaMut[6], DUET[7], mCSM[8], and SDM[9]) in different comparisons. The developed feature extraction pipeline and ΔΔG prediction model constituted our new ΔΔG prediction system, named DDGWizard.
+   we integrated 12 computational resources to develop a pipeline capable of automatically calculating 1547 features. In addition, through data collection and application of our pipeline, the feature-enriched DDGWizard dataset was created, including 15752 ΔΔG data. Furthermore, we performed feature selection and developed an accurate ΔΔG prediction model that achieved an R² of 0.61 in cross-validation and outperformed several other representative prediction methods in comparisons. Together, the feature calculation pipeline, DDGWizard dataset, and prediction model constitute the DDGWizard system, freely available for ΔΔG analysis and prediction.
    </div>
    <p></p>
 
-.. figure:: ./Introduction_res/figure1.png
+.. figure:: ./Introduction_res/figure1.jpg
    :align: center
 
 .. raw:: html
@@ -28,7 +28,7 @@ Introduction
    <p></p>
    <b>Purpose:</b>
    <div style="text-align: justify;">
-   The application program and source code have been published here, potentially prompting DDGWizard to become a useful resource for aiding rational design of protein thermostability.
+   The application program and dataset of DDGWizard have been published. This document provides detailed guidance on how to use them.
    </div>
    <p></p>
 

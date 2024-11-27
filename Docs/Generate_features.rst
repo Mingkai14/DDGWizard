@@ -1,4 +1,4 @@
-.. _Generate ΔΔG Feature Set:
+.. _Generate Feature-Enriched ΔΔG Data:
 
 .. raw:: html
 
@@ -18,19 +18,13 @@
         }
     </style>
 
-Generate ΔΔG Feature Set
-==================================
+Generate Feature-Enriched ΔΔG Data
+====================================
 
 .. raw:: html
 
     <div style="text-align: justify;">
-    This guide is intended to show users how to use DDGWizard to generate complete feature set.
-    <p></p>
-    After feature dimensionality reduction, the DDGWizard prediction program uses the optimal 69 features derived from 1547 features to predict ΔΔG, without calculating all the features during running.
-    <p></p>
-    However, users might need the complete feature set. They may want to generate the full feature set to characterize and analyze the raw ΔΔG data, or use it for their own machine learning projects.
-    <p></p>
-    We have also prepared a program in DDGWizard for generating the complete feature set.
+    This guide is intended to show users how to use DDGWizard to process raw ΔΔG data and output feature-enriched data. It can help user obtain more diverse feature information for their own ΔΔG dataset, facilitating further analysis, feature selection, and machine learning.
     <p></p>
     </div>
 
@@ -38,7 +32,7 @@ Generate ΔΔG Feature Set
 
     <div style="text-align: justify;">
     <h4>1. Running template</h4>
-    <p>We first provide you with a running template of running DDGWizard to generate complete feature set, and then explain the specifics of each parameter in detail.</p>
+    <p>We first provide you with a running template of running DDGWizard's feature calculation pipeline, and then explain the specifics of each parameter in detail.</p>
     <p></p>
     You can run the program with (this program also requires the prepared Blast database):
     <p></p>
@@ -100,7 +94,7 @@ Generate ΔΔG Feature Set
     Description of attributes for each column in the table file:
     <div style="margin-left: 40px;">
     <p></p>
-    a. <span class="keyword-highlight">PDB</span>: This attribute requires to provide a <span class="keyword-highlight">PDB</span> identifier sourced from <a href="https://www.rcsb.org/">the RCSB database</a>. In the feature extraction pipeline of DDGWizard, the program does not support the use of user-provided <span class="keyword-highlight">PDB</span> files. Users need to provide a <span class="keyword-highlight">PDB</span> identifier that can be searched on <a href="https://www.rcsb.org/">the RCSB database</a> as the name of the predicted protein. The program will automatically download the <span class="keyword-highlight">PDB</span> file from <a href="https://www.rcsb.org/">the RCSB database</a> according to this <span class="keyword-highlight">PDB</span> ID.
+    a. <span class="keyword-highlight">PDB</span>: This attribute requires to provide a <span class="keyword-highlight">PDB</span> identifier sourced from <a href="https://www.rcsb.org/">the RCSB database</a>. In the feature calculation pipeline of DDGWizard, the program does not support the use of user-provided <span class="keyword-highlight">PDB</span> files. Users need to provide a <span class="keyword-highlight">PDB</span> identifier that can be searched on <a href="https://www.rcsb.org/">the RCSB database</a> as the name of the predicted protein. The program will automatically download the <span class="keyword-highlight">PDB</span> file from <a href="https://www.rcsb.org/">the RCSB database</a> according to this <span class="keyword-highlight">PDB</span> ID.
     <p></p>
     b. <span class="keyword-highlight">Variation</span>: Specify the specific mutation for which you want to generate features, including the mutation site information and amino acid substitution details.
     <p></p>

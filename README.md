@@ -1,13 +1,13 @@
 # DDGWizard
 
 **Background:**  
-Thermostability is an important property of proteins and a critical factor for their wide application. Until now, rational/semi-rational design combined with computational methods have become widely used strategies to increase protein thermostability. ΔΔG prediction methods based on machine learning are among these computational methods and have been widely proposed [1]. However, they still suffer from the issue of insufficient prediction performance [2]. The main reasons include that the features used for training models are insufficiently informative [2]. 
+Thermostability is an important property of proteins and a critical factor for their wide application. Accurate prediction of ΔΔG enables the estimation of the impact of mutations on thermostability in advance. A range of ΔΔG prediction methods has now emerged, especially those based on machine learning. However, their prediction performance remains limited due to insufficiently informative training features. So far, although many computational resources have been used to calculate ΔΔG features or output potentially relevant features, little effort has been made to integrate them for the comprehensive calculation.  
 
 **Characteristics:**  
-To conduct more sufficient feature engineering, we constructed a comprehensive ΔΔG feature set by integrating current ΔΔG feature resources and developed a feature extraction pipeline to extract features from raw ΔΔG data. Furthermore, feature dimensionality reduction was conducted to select the optimal features and develop a ΔΔG prediction model. The model showed notable performance, achieving an R-squared of 0.61 in cross-validation and outperformed other representative ΔΔG prediction methods (ACDC-NN[3], DDGun3D[4], FoldX[5], DynaMut[6], DUET[7], mCSM[8], and SDM[9]) in different comparisons. The developed feature extraction pipeline and ΔΔG prediction model constituted our new ΔΔG prediction system, named DDGWizard.
+we integrated 12 computational resources to develop a pipeline capable of automatically calculating 1547 features. In addition, through data collection and application of our pipeline, the feature-enriched DDGWizard dataset was created, including 15752 ΔΔG data. Furthermore, we performed feature selection and developed an accurate ΔΔG prediction model that achieved an R² of 0.61 in cross-validation and outperformed several other representative prediction methods in comparisons. Together, the feature calculation pipeline, DDGWizard dataset, and prediction model constitute the DDGWizard system, freely available for ΔΔG analysis and prediction. 
 
 **Purpose:**  
-The application program and source code have been published here, potentially prompting DDGWizard to become a useful resource for aiding rational design of protein thermostability.  
+The application program and dataset of DDGWizard have been published here.  
 
 # Document  
 
@@ -15,17 +15,7 @@ Complete documentation is available on [![docs](https://img.shields.io/badge/doc
 
 It contains detailed installation guidelines and usage instructions.  
 
-# Reference  
 
-[1] Marabotti A, Scafuri B, Facchiano A. Predicting the stability of mutant proteins by computational approaches: an overview[J]. Briefings in Bioinformatics, 2021, 22(3): bbaa074.  
-[2] Fang J. A critical review of five machine learning-based algorithms for predicting protein stability changes upon mutation[J]. Briefings in bioinformatics, 2020, 21(4): 1285-1292.  
-[3] Benevenuta S, Pancotti C, Fariselli P, et al. An antisymmetric neural network to predict free energy changes in protein variants[J]. Journal of Physics D: Applied Physics, 2021, 54(24): 245403.  
-[4] Li B, Yang Y T, Capra J A, et al. Predicting changes in protein thermodynamic stability upon point mutation with deep 3D convolutional neural networks[J]. PLoS computational biology, 2020, 16(11): e1008291.  
-[5] Guerois R, Nielsen J E, Serrano L. Predicting changes in the stability of proteins and protein complexes: a study of more than 1000 mutations[J]. Journal of molecular biology, 2002, 320(2): 369-387.  
-[6] Rodrigues C H M, Pires D E V, Ascher D B. DynaMut: predicting the impact of mutations on protein conformation, flexibility and stability[J]. Nucleic acids research, 2018, 46(W1): W350-W355.  
-[7] Pires D E V, Ascher D B, Blundell T L. DUET: a server for predicting effects of mutations on protein stability using an integrated computational approach[J]. Nucleic acids research, 2014, 42(W1): W314-W319.  
-[8] Pires D E V, Ascher D B, Blundell T L. mCSM: predicting the effects of mutations in proteins using graph-based signatures[J]. Bioinformatics, 2014, 30(3): 335-342.  
-[9] Pandurangan A P, Ochoa-Montano B, Ascher D B, et al. SDM: a server for predicting effects of mutations on protein stability[J]. Nucleic acids research, 2017, 45(W1): W229-W235.  
 
 
 

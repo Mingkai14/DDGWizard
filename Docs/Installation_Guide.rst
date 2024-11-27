@@ -24,9 +24,9 @@ Installation Guide
 .. raw:: html
 
     <div style="text-align: justify;">
-    DDGWizard mainly consists of two parts: the ΔΔG prediction program, used to predict ΔΔG, and the feature extraction pipeline, which generates complete feature set extracted from the raw ΔΔG dataset.
+    DDGWizard consists of 3 components: the feature calculation pipeline, that processes raw ΔΔG data and outputs feature-enriched ΔΔG data with 1547 features; the DDGWizard dataset, including 15752 ΔΔG data; and the accurate ΔΔG prediction model.
     <p></p>
-    This section includes the installation guides for both parts.
+    This section explains how to install dependencies for using the DDGWizard's application (there is no need to install anything to access the DDGWizard dataset; it can be directly downloaded).
     <p></p>
     <h4>Installation prerequisites:</h4>
     CentOS 7 or Ubuntu system; GCC version higher than 4.8.5; Conda version higher than 23.0; Git.
@@ -35,13 +35,13 @@ Installation Guide
 
 .. _`the Prediction Part`:
 
-ΔΔG Prediction Program (for Predicting ΔΔG)
---------------------------------------------
+the ΔΔG Prediction Model (for Predicting ΔΔG)
+-----------------------------------------------
 
 .. raw:: html
 
     <div style="text-align: justify;">
-    This installation guide is intended for users who aim to predict ΔΔG.
+    This subsection is for users who need to use the ΔΔG prediction model. If merely using the prediction model, the partial dependencies of the feature calculation pipeline need to be installed.
     <p></p>
     The installation steps are as follows, which will take about 1 hour.
     <p></p>
@@ -182,15 +182,15 @@ Installation Guide
 
 .. _`the Characterization part`:
 
-Feature Extraction Pipeline (for Generating ΔΔG Feature Set)
--------------------------------------------------------------
+the Feature Calculation Pipeline (for Outputting Feature-Enriched ΔΔG Data)
+------------------------------------------------------------------------------
 
 .. raw:: html
 
     <div style="text-align: justify;">
-    This installation guide is intended for users who aim to extract features from raw ΔΔG data. It will output complete ΔΔG feature set for analysis or machine learning purposes.
+    This subsection is for users who need to use the feature calculation pipeline. It can assist users in processing input raw ΔΔG data and outputting feature-enriched new data, including 1574 features that completed calculations. It can facilitate further analysis, feature selection, and machine learning.
     <p></p>
-    The feature extraction pipeline requires additional prerequisites to meet the needs of calculation for complete feature set. It uses certain R-based packages and certain cross-platform software, thus requiring dependencies on the R language and the container system.
+    The feature calculation pipeline requires additional dependencies. It uses certain R-based packages and certain cross-platform software, thus requiring dependencies on the R language and the container system.
     <p></p>
     <h4>Additional prerequisites:</h4>
     <span class=keyword-highlight>R</span>, <span class=keyword-highlight>Docker</span> or <span class=keyword-highlight>Singularity</span> (Only one container system is needed).
@@ -200,9 +200,9 @@ Feature Extraction Pipeline (for Generating ΔΔG Feature Set)
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>1. Complete the 1-5 steps of the prediction part</h4>
+    <h4>1. Complete the 1-5 steps of "the ΔΔG Prediction Model" part</h4>
     <p></p>
-    Perform the same operations as steps 1-5 in the prediction part.
+    Perform the same operations as steps 1-5 in "the ΔΔG Prediction Model" part.
     <p></p>
     </div>
 
@@ -227,7 +227,7 @@ Feature Extraction Pipeline (for Generating ΔΔG Feature Set)
 
     <div style="text-align: justify;">
     <h4>3. Download the container image files</h4>
-    The feature extraction pipeline of DDGWizard will automatically call the container system to utilize the resources from the container image files. Before this, you need to download the container image files first.
+    The feature calculation pipeline of DDGWizard will automatically call the container system to utilize the resources from the container image files. Before this, you need to download the container image files first.
     <p></p>
     Please download the following two files: <span class="keyword-highlight">myprof.tar</span> (128MB) and <span class="keyword-highlight">myprof.sif</span> (360MB) from <a href="https://zenodo.org/records/12817843">https://zenodo.org/records/12817843</a>, and copy them to the path: <span class="keyword-highlight">DDGWizard/src/Prof_Source</span> within the DDGWizard program folder:
     <p></p>
@@ -248,9 +248,9 @@ Feature Extraction Pipeline (for Generating ΔΔG Feature Set)
 
     <div style="text-align: justify;">
     <h4>4. Config container</h4>
-    Your Linux system needs to have at least one of the two container systems, <span class="keyword-highlight">Docker</span> or <span class="keyword-highlight">Singularity</span>, installed and configured in order for the feature extraction pipeline of DDGWizard to run. You can download and install them from <a href="https://www.docker.com/">the official Docker websites</a> and <a href="https://sylabs.io/singularity/">the official Singularity websites</a>.
+    Your Linux system needs to have at least one of the two container systems, <span class="keyword-highlight">Docker</span> or <span class="keyword-highlight">Singularity</span>, installed and configured in order for the feature calculation pipeline of DDGWizard to run. You can download and install them from <a href="https://www.docker.com/">the official Docker websites</a> and <a href="https://sylabs.io/singularity/">the official Singularity websites</a>.
     <p></p>
-    You can choose one of <span class="keyword-highlight">Docker</span> or <span class="keyword-highlight">Singularity</span> to be used by the feature extraction pipeline. If you choose <span class="keyword-highlight">Docker</span>, you will need to perform an additional step:
+    You can choose one of <span class="keyword-highlight">Docker</span> or <span class="keyword-highlight">Singularity</span> to be used by the feature calculation pipeline. If you choose <span class="keyword-highlight">Docker</span>, you will need to perform an additional step:
     <p></p>
     </div>
 

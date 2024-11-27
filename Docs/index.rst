@@ -15,7 +15,8 @@ DDGWizard Tutorial
    Predict_ddg
    Predict_ddg_of_sm
    Generate_features
-   Reference
+   DDGWizard_dataset
+
 
 
 
