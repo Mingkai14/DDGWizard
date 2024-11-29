@@ -35,8 +35,15 @@ def Init_for_SIFT():
 
 def Init_for_FoldX():
     if not os.path.exists('./molecules/'):
+        if os.path.exists(f'{FoldX_Path}molecules/'):
+            import shutil
+            shutil.copytree(f'{FoldX_Path}molecules/','./molecules/')
+        else:
+            error_obj.Something_Wrong(Init_for_FoldX.__name__,'lacking of molecules of FoldX')
+            return False
+    if not os.path.exists(f'{FoldX_Path}rotabase.txt'):
         import shutil
-        shutil.copytree(f'{FoldX_Path}molecules/','./molecules/')
+        shutil.copy(f'{Rotabase_Path}',f'{FoldX_Path}')
 
 
 

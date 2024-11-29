@@ -102,8 +102,52 @@ the ΔΔG Prediction Model (for Predicting ΔΔG)
 
 .. raw:: html
 
+    <div style="text-align: justify;">
+    <h4>3. Download FoldX 5.0</h4>
+    <p></p>
+    Users need to apply and download the FoldX 5.0 application. Visit <a href="https://foldxsuite.crg.eu/academic-license-info">Apply for FoldX 5.0</a> to register an account and download the <span class="keyword-highlight">foldx5Linux64.zip</span> file. Copy this FoldX compressed file to the path <span class="keyword-highlight">DDGWizard/bin/FoldX_5.0/</span> and extract it. Use the following commands:
+    <p></p>
+    </div>
+
+.. code-block::
+
+     $ cp foldx5Linux64.zip DDGWizard/bin/FoldX_5.0/
+     $ unzip foldx5Linux64.zip
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    <h4>4. Download Ring 3.0</h4>
+    <p></p>
+    Users need to apply and download the Ring 3.0 application. Visit <a href="https://biocomputingup.it/services/download/">Apply for Ring 3.0</a> to apply and obtain the <span class="keyword-highlight">ring-3.0.0.tgz</span> file. Copy this Ring 3.0 compressed file to the path <span class="keyword-highlight">DDGWizard/bin/ring-3.0.0/</span> and extract it. Use the following commands:
+    <p></p>
+    </div>
+
+.. code-block::
+
+     $ cp ring-3.0.0.tgz DDGWizard/bin/ring-3.0.0/
+     $ tar -zxvf ring-3.0.0.tgz
+     $ cp -r ./ring-3.0.0/* .
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    <h4>5. Download DisEMBL</h4>
+    <p></p>
+    Users need to apply and download the DisEMBL program. Visit <a href="https://zenodo.org/records/14246673">Download the DisEMBL</a> to download the <span class="keyword-highlight">DisEMBL-1.4.tgz</span> file. Copy this compressed file to the path <span class="keyword-highlight">DDGWizard/bin/DisEMBL_1_4/</span> and extract it. Use the following commands:
+    <p></p>
+    </div>
+
+.. code-block::
+
+     $ cp DisEMBL-1.4.tgz DDGWizard/bin/DisEMBL_1_4/
+     $ tar -zxvf DisEMBL-1.4.tgz
+     $ cp -r ./DisEMBL-1.4/* .
+
+.. raw:: html
+
    <div style="text-align: justify;">
-   <h4>3. Configure Modeller</h4>
+   <h4>6. Configure Modeller</h4>
    <p></p>
    The Modeller software is used for homology or comparative modeling of protein three-dimensional structures. You can find more information about Modeller <a href="https://salilab.org/modeller/">here</a>. In DDGWizard, Modeller is used to construct PDB protein structure files of mutations based on the user's input of wild-type PDB protein structure files.
    <p></p>
@@ -138,7 +182,7 @@ the ΔΔG Prediction Model (for Predicting ΔΔG)
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>4. Configure DSSP</h4>
+    <h4>7. Configure DSSP</h4>
     The DSSP is software used to calculate the RSA (relative surface area) and secondary stuctures of <span class="keyword-highlight">PDB</span> files.
     <p></p>
     Due to the version conflict issues, you must do operations below to make DSSP can be used of our program.
@@ -162,7 +206,7 @@ the ΔΔG Prediction Model (for Predicting ΔΔG)
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>5. Make sure the programs of the DDGWizard have the executable permission</h4>
+    <h4>8. Make sure the programs of the DDGWizard have the executable permission</h4>
     The programs of DDGWizard need the executable permission to run.
     <p></p>
     Return to the DDGWizard program folder and execute the command:
@@ -202,7 +246,7 @@ the Feature Calculation Pipeline (for Outputting Feature-Enriched ΔΔG Data)
     <div style="text-align: justify;">
     <h4>1. Complete the 1-5 steps of "the ΔΔG Prediction Model" part</h4>
     <p></p>
-    Perform the same operations as steps 1-5 in "the ΔΔG Prediction Model" part.
+    Perform the same operations as steps 1-8 in "the ΔΔG Prediction Model" part.
     <p></p>
     </div>
 
