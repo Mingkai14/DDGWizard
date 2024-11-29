@@ -32,7 +32,7 @@ Access DDGWizard Dataset
 
     <div style="text-align: justify;">
     <h4>1. DDGWizard Dataset</h4>
-    <p><span class="keyword-highlight">DDGWizard Dataset.csv</span> can be accessed and downloaded from <a href="https://zenodo.org/records/14229095">https://zenodo.org/records/14229095</a>.</p>
+    <p><span class="keyword-highlight">DDGWizard Dataset.csv</span> can be accessed and downloaded from <a href="https://zenodo.org/records/14246943">DDGWizard Datasets and Resources</a>.</p>
     <p></p>
     It is a feature-enriched dataset and contain 15752 ΔΔG data, which can be directly utilised by users to assist in further analysis, feature selection, and machine learning.
     <p></p>
