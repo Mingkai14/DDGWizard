@@ -167,7 +167,7 @@ the ΔΔG Prediction Model (for Predicting ΔΔG)
     <div class="highlight">
     <pre style="overflow: scroll">
     $ cd <b>&lt;the path to your conda envs folder&gt;</b>
-    $ vi DDGWizard/lib/modeller-10.4/modlib/modeller/config.py
+    $ vi DDGWizard/lib/modeller-10.6/modlib/modeller/config.py
     </pre>
     </div>
     </div>
