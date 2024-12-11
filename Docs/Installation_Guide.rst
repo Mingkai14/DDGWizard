@@ -56,7 +56,7 @@ the ΔΔG Prediction Model (for Predicting ΔΔG)
 
 .. code-block::
 
-    $ git clone https://github.com/Mingkai14/DDGWizard.git
+    $ git clone https://github.com/bioinfbrad/DDGWizard.git
 
 .. raw:: html
 
