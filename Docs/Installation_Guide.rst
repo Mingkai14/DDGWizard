@@ -270,7 +270,7 @@ the Feature Calculation Pipeline (for Outputting Feature-Enriched ΔΔG Data)
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>3. Download the container image files</h4>
+    <h4>3. Download the container image files for installing PROFbval</h4>
     The feature calculation pipeline of DDGWizard will automatically call the container system to utilize the resources from the container image files. Before this, you need to download the container image files first.
     <p></p>
     Please download the following two files: <span class="keyword-highlight">myprof.tar</span> (128MB) and <span class="keyword-highlight">myprof.sif</span> (360MB) from <a href="https://zenodo.org/records/12817843">https://zenodo.org/records/12817843</a>, and copy them to the path: <span class="keyword-highlight">DDGWizard/src/Prof_Source</span> within the DDGWizard program folder:
