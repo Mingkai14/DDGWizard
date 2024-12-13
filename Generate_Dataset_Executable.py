@@ -24,7 +24,7 @@ if __name__ == '__main__':
     parser.add_argument('--db_name', type=str, default='')
     parser.add_argument('--if_reversed_data', type=int, default=1)
     parser.add_argument('--blast_process_num', type=int, default=1)
-    parser.add_argument('--container_type', type=str, default='D')
+    parser.add_argument('--container_type', type=str, default='-')
     parser.add_argument('--mode',type=str,default='whole')
     parser.add_argument('--process_num', type=int, default=1)
 
@@ -49,7 +49,7 @@ if __name__ == '__main__':
     if not os.path.isdir(args.db_folder_path):
         error_obj.Something_Wrong(__name__)
         exit(1)
-    if str(args.container_type) not in ['D','S']:
+    if str(args.container_type) not in ['D','S','-']:
         error_obj.Something_Wrong(__name__)
         exit(1)
     if str(args.mode) not in ['blast_only','model_only','whole']:

@@ -8,7 +8,7 @@ Process_Num=1
 
 Singularity_Container_Path='./src/Prof_Source/myprof.sif'
 
-D_or_S='D'
+D_or_S='-'
 
 Mode=''
 

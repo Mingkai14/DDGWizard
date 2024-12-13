@@ -13,7 +13,6 @@ from scripts.Classes import *
 from bin.rdkit_2023_3_1.rdkit_compute import Compute_Pharmacophore_with_Rdkit,Check_Available_PDB_with_Rdkit
 from bin.Protlego.Hydrophobic_cluster import *
 from math import sqrt,pow
-from scripts.Rosetta import Clean_PDB_by_Rosetta
 from scripts.Docker import Docker_Remove_Container
 from scripts.Global_Value import Log_Path
 
@@ -178,7 +177,7 @@ def Prepare(table_path,clean_path,res_table_name,raw_pdb_num,mut_info,chain_id,p
         return False
     wt_pdb_name = raw_pdb_num
     wt_pdb_path = w_pdb_path + wt_pdb_name + '.pdb'
-    Clean_PDB_by_Rosetta(raw_pdb_path+raw_pdb_num+'.pdb',w_pdb_path,clean_path,wt_pdb_name)
+    Clean_PDBs(raw_pdb_path+raw_pdb_num+'.pdb',w_pdb_path,clean_path,wt_pdb_name)
     if not os.path.exists(wt_pdb_path):
         error_obj.Something_Wrong(Prepare.__name__, 'PDB can not be cleaned, may only have CA')
         return False
@@ -276,7 +275,7 @@ def Prepare_for_Pred(table_path,clean_path,res_table_name,pdb_name,pdb_path,mut_
         return False
     wt_pdb_name = pdb_name
     wt_pdb_path = w_pdb_path + wt_pdb_name + '.pdb'
-    Clean_PDB_by_Rosetta(pdb_path,w_pdb_path,clean_path,wt_pdb_name)
+    Clean_PDBs(pdb_path,w_pdb_path,clean_path,wt_pdb_name)
     if not os.path.exists(wt_pdb_path):
         error_obj.Something_Wrong(Prepare_for_Pred.__name__, 'PDB can not be cleaned, may only have CA')
         return False
@@ -953,6 +952,26 @@ def Clean_Main_Directory():
         if os.path.basename(file).startswith('.'):
             continue
         os.remove(file)
+
+
+def Clean_PDBs(pdb_path,wt_pdb_path,clean_path,wt_pdb_name):
+    output_path = wt_pdb_path + wt_pdb_name + '.pdb'
+    files = os.listdir(wt_pdb_path)
+    pdbs_names = []
+    for file in files:
+        pdbs_names.append(file.split('.')[0])
+    if wt_pdb_name in pdbs_names:
+        return
+    os.system(f'{clean_path}clean_pdb.py {pdb_path} ignorechain')
+    files=os.listdir('./')
+    for file in files:
+        if file.split('.')[len(file.split('.'))-1]=='pdb':
+            with open(file,'r') as r:
+                with open(output_path,'w') as w:
+                    w.write(r.read())
+            break
+    Clean_Main_Directory()
+
 
 
 def Run_Rdikit(pdb_path,rdkit_path,rdkit_fdef_name,res_dict:dict,aa:Researched_Amino_Acid,cutoff:float,is_bonding:bool):

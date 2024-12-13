@@ -1,28 +1,7 @@
 #!/usr/bin/env python
-''' This script cleans PDBs for Rosetta by removing extraneous information, converting residues names and renumbering.
 
-It outputs both the cleaned PDB and a fasta file of the cleaned sequence.
 
-Required parameters are the name of the PDB you want to clean, and the chain ids of the chains you want.
 
-The PDB name may be specified with or without the .pdb file handle and may be provided as a gziped file.
-If the PDB isn't found locally, the given 4 letter code will be fetched from the internet.
-
-Chain id: only the specified chains will be extracted. You may specify more than one: "AB" gets you chain A and B,
-and "C" gets you just chain C. Special notations are "nochain" to remove chain identiry from the output, and "ignorechain"
-to get all the chains.
-
-(Script written by Phil Bradley, Rhiju Das, Michael Tyka, TJ Brunette, and James Thompson from the Baker Lab. Edits done by Steven Combs, Sam Deluca, Jordan Willis and Rocco Moretti from the Meiler Lab.)
-'''
-
-# Function of this script: "clean" raw pdb file by following tasks so that rosetta modeling becomes easier
-
-## starts residue number at 1
-## translates certain residues to their cannonical amino acid equivalents
-## removes unknown residues
-## removes residues with 0 occupancy
-## generates a fasta file
-## and leaves the 1st model among many NMR models
 
 from __future__ import print_function
 import sys
