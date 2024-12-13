@@ -33,17 +33,17 @@ Installation Guide
     <p></p>
     </div>
 
-.. _`the Prediction Part`:
+.. _`the Characterization part`:
 
-the ΔΔG Prediction Model (for Predicting ΔΔG)
------------------------------------------------
+Feature Calculation Pipeline (for Generating Feature-Enriched ΔΔG Data)
+------------------------------------------------------------------------------
 
 .. raw:: html
 
     <div style="text-align: justify;">
-    This subsection is for users who need to use the ΔΔG prediction model. If merely using the prediction model, the partial dependencies of the feature calculation pipeline need to be installed.
+    This subsection is for users who need to use the feature calculation pipeline. It can assist users in processing input raw ΔΔG data and outputting feature-enriched new data, including 1574 features that completed calculations. It can facilitate further analysis, feature selection, and machine learning.
     <p></p>
-    The installation steps are as follows, which will take about 1 hour.
+    The installation steps are as follows.
     <p></p>
     </div>
 
@@ -103,59 +103,39 @@ the ΔΔG Prediction Model (for Predicting ΔΔG)
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>3. Download FoldX 5.0</h4>
+    <h4>3. Download NCBI-BLAST-2.13.0+</h4>
     <p></p>
-    Users need to apply and download the FoldX 5.0 application. Visit <a href="https://foldxsuite.crg.eu/academic-license-info">Apply for FoldX 5.0</a> to register an account and download the <span class="keyword-highlight">foldx5Linux64.zip</span> file. Copy this FoldX compressed file to the path <span class="keyword-highlight">DDGWizard/bin/FoldX_5.0/</span> and extract it. Use the following commands:
+    Users need to download the NCBI-BLAST-2.13.0 program for allowing DDGWizard to carry out multiple sequence alignment (MSA). Please visit <a href="https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.13.0/">Download NCBI-BLAST-2.13.0+</a> to download the <span class="keyword-highlight">ncbi-blast-2.13.0+-src.tar.gz</span> file. Copy this compressed file to the path <span class="keyword-highlight">DDGWizard/bin/ncbi_blast_2_13_0+/</span> and extract it. Use the following commands:
     <p></p>
     </div>
 
 .. code-block::
 
-     $ cp foldx5Linux64.zip DDGWizard/bin/FoldX_5.0/
-     $ unzip foldx5Linux64.zip
+     $ wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.13.0/ncbi-blast-2.13.0+-src.tar.gz
+     $ cp ncbi-blast-2.13.0+-src.tar.gz DDGWizard/bin/ncbi_blast_2_13_0+/
+     $ cd DDGWizard/bin/ncbi_blast_2_13_0+/
+     $ tar -zxvf ncbi-blast-2.13.0+-src.tar.gz
+     $ cp -r ncbi_blast_2_13_0+/* .
 
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>4. Download Ring 3.0</h4>
-    <p></p>
-    Users need to apply and download the Ring 3.0 application. Visit <a href="https://biocomputingup.it/services/download/">Apply for Ring 3.0</a> to apply and obtain the <span class="keyword-highlight">ring-3.0.0.tgz</span> file. Copy this Ring 3.0 compressed file to the path <span class="keyword-highlight">DDGWizard/bin/ring-3.0.0/</span> and extract it. Use the following commands:
+    NCBI-BLAST-2.13.0+ is a "United States Government Work" under the terms of the United States Copyright Act. Please read and accept the license file in its folder before proceeding further.
     <p></p>
     </div>
-
-.. code-block::
-
-     $ cp ring-3.0.0.tgz DDGWizard/bin/ring-3.0.0/
-     $ tar -zxvf ring-3.0.0.tgz
-     $ cp -r ./ring-3.0.0/* .
-
-.. raw:: html
-
-    <div style="text-align: justify;">
-    <h4>5. Download DisEMBL</h4>
-    <p></p>
-    Users need to apply and download the DisEMBL program. Visit <a href="https://zenodo.org/records/14246673">Download the DisEMBL</a> to download the <span class="keyword-highlight">DisEMBL-1.4.tgz</span> file. Copy this compressed file to the path <span class="keyword-highlight">DDGWizard/bin/DisEMBL_1_4/</span> and extract it. Use the following commands:
-    <p></p>
-    </div>
-
-.. code-block::
-
-     $ cp DisEMBL-1.4.tgz DDGWizard/bin/DisEMBL_1_4/
-     $ tar -zxvf DisEMBL-1.4.tgz
-     $ cp -r ./DisEMBL-1.4/* .
 
 .. raw:: html
 
    <div style="text-align: justify;">
-   <h4>6. Configure Modeller</h4>
+   <h4>4. Configure Modeller</h4>
    <p></p>
-   The Modeller software is used for homology or comparative modeling of protein three-dimensional structures. You can find more information about Modeller <a href="https://salilab.org/modeller/">here</a>. In DDGWizard, Modeller is used to construct PDB protein structure files of mutations based on the user's input of wild-type PDB protein structure files.
+   The Modeller software is used for homology or comparative modeling of protein three-dimensional structures. In DDGWizard, Modeller is used to construct PDB protein structure files of mutations based on the user's input of wild-type PDB protein structure files.
    <p></p>
-   Modeller has already been installed when creating Conda environment. But to allow our program to use it, you need to have a license of the Modeller and configure it.
+   Modeller has already been installed when creating Conda environment. But to allow our program to call it, you need to have a license of the Modeller and configure it.
    <p></p>
-   Please enter <a href="https://salilab.org/modeller/registration.html">the official Modeller website</a>, register an account and obtain a license. You can simply follow their instructions to achieve this.
+   Please enter <a href="https://salilab.org/modeller/registration.html">Official Modeller Website</a> to register an account. Modeller use "Academic End-User Software License Agreement for MODELLER" terms. Please follow their instructions, read and accept the terms to obtain a license.
    <p></p>
-   Once you obtain the license of the Modeller, please input the license into installed Modeller's configuration file. You can find it under the <span class="keyword-highlight">Conda envs folder</span>.
+   Then input the license into installed Modeller's configuration file. You can find it under the <span class="keyword-highlight">Conda envs folder</span>.
    <p></p>
    Enter your local <span class="keyword-highlight">Conda envs folder</span>, and open the Modeller's configuration file:
    <p></p>
@@ -182,12 +162,71 @@ the ΔΔG Prediction Model (for Predicting ΔΔG)
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>7. Configure DSSP</h4>
-    The DSSP is software used to calculate the RSA (relative surface area) and secondary stuctures of <span class="keyword-highlight">PDB</span> files.
+    <h4> To use DDGWizard feature calculation pipeline, the following software is optional and not required to be installed (if certain software is not installed, the feature values it calculates will not be output).</h4>
     <p></p>
-    Due to the version conflict issues, you must do operations below to make DSSP can be used of our program.
+    </div>
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    <h4> (Optional) 5. Download FoldX 5.0</h4>
     <p></p>
-    Enter your local <span class="keyword-highlight">Conda envs folder</span>, then enter <span class="keyword-highlight">bin folder</span>, and copy <span class="keyword-highlight">mkdssp</span> (a modified version of dssp) as <span class="keyword-highlight">dssp</span>:
+    Users can download the FoldX 5.0 program for allowing DDGWizard to calculate energy terms of proteins. FoldX has academic version and commercial version. To use it in DDGWizard, academic version is enough. Please visit <a href="https://foldxsuite.crg.eu/academic-license-info">Apply for FoldX 5.0</a> to register an account, read and accept "FoldX Academic License" terms to download the <span class="keyword-highlight">foldx5Linux64.zip</span> file. Copy this compressed file to the path <span class="keyword-highlight">DDGWizard/bin/FoldX_5.0/</span> and extract it. Use the following commands:
+    <p></p>
+    </div>
+
+.. code-block::
+
+     $ cp foldx5Linux64.zip DDGWizard/bin/FoldX_5.0/
+     $ cd DDGWizard/bin/FoldX_5.0/
+     $ unzip foldx5Linux64.zip
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    <h4> (Optional) 6. Download Ring 3.0</h4>
+    <p></p>
+    Users can download the Ring 3.0 application for allowing DDGWizard to calculate residue interaction information. Please visit <a href="https://biocomputingup.it/services/download/">Apply for Ring 3.0</a> to apply. Please read and accept the license of Ring 3.0 to obtain the <span class="keyword-highlight">ring-3.0.0.tgz</span> file. Copy this compressed file to the path <span class="keyword-highlight">DDGWizard/bin/ring-3.0.0/</span> and extract it. Use the following commands:
+    <p></p>
+    </div>
+
+.. code-block::
+
+     $ cp ring-3.0.0.tgz DDGWizard/bin/ring-3.0.0/
+     $ cd DDGWizard/bin/ring-3.0.0/
+     $ tar -zxvf ring-3.0.0.tgz
+     $ cp -r ./ring-3.0.0/* .
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    <h4> (Optional) 7. Download DisEMBL</h4>
+    <p></p>
+    Users can download the DisEMBL program for allowing DDGWizard to count disorder information of proteins. Please visit <a href="https://zenodo.org/records/14246673">Download the DisEMBL</a> to download the <span class="keyword-highlight">DisEMBL-1.4.tgz</span> file. Copy this compressed file to the path <span class="keyword-highlight">DDGWizard/bin/DisEMBL_1_4/</span> and extract it. Use the following commands:
+    <p></p>
+    </div>
+
+.. code-block::
+
+     $ cp DisEMBL-1.4.tgz DDGWizard/bin/DisEMBL_1_4/
+     $ cd DDGWizard/bin/DisEMBL_1_4/
+     $ tar -zxvf DisEMBL-1.4.tgz
+     $ cp -r ./DisEMBL-1.4/* .
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    DisEMBL uses GPL 2.0 open-source license. Please read and accept the license file in its folder before proceeding further.
+    <p></p>
+    </div>
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    <h4> (Optional) 8. Configure DSSP</h4>
+    The DSSP is used to calculate the RSA (relative surface area) and secondary stuctures of <span class="keyword-highlight">PDB</span> files.
+    <p></p>
+    To allow DDGWizard use DSSP, please enter your local <span class="keyword-highlight">Conda envs folder</span>, then enter <span class="keyword-highlight">bin folder</span>, and copy <span class="keyword-highlight">mkdssp</span> as <span class="keyword-highlight">dssp</span>:
     <p></p>
     </div>
 
@@ -206,59 +245,8 @@ the ΔΔG Prediction Model (for Predicting ΔΔG)
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>8. Make sure the programs of the DDGWizard have the executable permission</h4>
-    The programs of DDGWizard need the executable permission to run.
-    <p></p>
-    Return to the DDGWizard program folder and execute the command:
-    <p></p>
-    </div>
-
-.. raw:: html
-
-    <div class="highlight-default notranslate">
-    <div class="highlight">
-    <pre style="overflow: scroll">
-    $ cd <b>&lt;the path to the parent folder of DDGWizard program folder&gt;</b>/DDGWizard
-    $ chmod -R +x .
-    </pre>
-    </div>
-    </div>
-
-.. _`the Characterization part`:
-
-the Feature Calculation Pipeline (for Outputting Feature-Enriched ΔΔG Data)
-------------------------------------------------------------------------------
-
-.. raw:: html
-
-    <div style="text-align: justify;">
-    This subsection is for users who need to use the feature calculation pipeline. It can assist users in processing input raw ΔΔG data and outputting feature-enriched new data, including 1574 features that completed calculations. It can facilitate further analysis, feature selection, and machine learning.
-    <p></p>
-    The feature calculation pipeline requires additional dependencies. It uses certain R-based packages and certain cross-platform software, thus requiring dependencies on the R language and the container system.
-    <p></p>
-    <h4>Additional prerequisites:</h4>
-    <span class=keyword-highlight>R</span>, <span class=keyword-highlight>Docker</span> or <span class=keyword-highlight>Singularity</span> (Only one container system is needed).
-    <p></p>
-    </div>
-
-.. raw:: html
-
-    <div style="text-align: justify;">
-    <h4>1. Complete the 1-5 steps of "the ΔΔG Prediction Model" part</h4>
-    <p></p>
-    Perform the same operations as steps 1-8 in "the ΔΔG Prediction Model" part.
-    <p></p>
-    </div>
-
-.. raw:: html
-
-    <div style="text-align: justify;">
-    <h4>2. Install Bio3D</h4>
-    We assume that <span class="keyword-highlight">R</span> is already installed on your Linux system (You can download and install <span class="keyword-highlight">R</span> from <a href="https://cran.r-project.org/">the official R website</a>).
-    <p></p>
-    The R-based package <span class="keyword-highlight">Bio3D</span> used to calculate the NMA (normal mode analysis) features.
-    <p></p>
-    Open your <span class="keyword-highlight">R</span> and use following commands to install package <span class="keyword-highlight">Bio3D</span>:
+    <h4>(Optional) 9. Install Bio3D</h4>
+    Users can install the Bio3D package for allowing DDGWizard to calculate atomic fluctuations based on NMA (normal mode analysis). It requires users have <span class="keyword-highlight">R</span> as prerequisites (it can be downloaded and installed from <a href="https://cran.r-project.org/">Official R Website</a>). Then please use following commands to install Bio3d package:
     <p></p>
     </div>
 
@@ -270,10 +258,10 @@ the Feature Calculation Pipeline (for Outputting Feature-Enriched ΔΔG Data)
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>3. Download the container image files for installing PROFbval</h4>
-    The feature calculation pipeline of DDGWizard will automatically call the container system to utilize the resources from the container image files. Before this, you need to download the container image files first.
+    <h4>(Optional) 10. Download PROFbval</h4>
+    PROFbval relies on the Ubuntu environment. To address cross-platform compatibility, we have created container images for easy download by users. This requires users have Docker or Singularity as a prerequisite.
     <p></p>
-    Please download the following two files: <span class="keyword-highlight">myprof.tar</span> (128MB) and <span class="keyword-highlight">myprof.sif</span> (360MB) from <a href="https://zenodo.org/records/12817843">https://zenodo.org/records/12817843</a>, and copy them to the path: <span class="keyword-highlight">DDGWizard/src/Prof_Source</span> within the DDGWizard program folder:
+    Please download the following two files: <span class="keyword-highlight">myprof.tar</span> (128MB) and <span class="keyword-highlight">myprof.sif</span> (360MB) from <a href="https://zenodo.org/records/12817843">https://zenodo.org/records/12817843</a>, and copy them to the path: <span class="keyword-highlight">DDGWizard/src/Prof_Source</span>:
     <p></p>
     </div>
 
@@ -291,10 +279,7 @@ the Feature Calculation Pipeline (for Outputting Feature-Enriched ΔΔG Data)
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>4. Config container</h4>
-    Your Linux system needs to have at least one of the two container systems, <span class="keyword-highlight">Docker</span> or <span class="keyword-highlight">Singularity</span>, installed and configured in order for the feature calculation pipeline of DDGWizard to run. You can download and install them from <a href="https://www.docker.com/">the official Docker websites</a> and <a href="https://sylabs.io/singularity/">the official Singularity websites</a>.
-    <p></p>
-    You can choose one of <span class="keyword-highlight">Docker</span> or <span class="keyword-highlight">Singularity</span> to be used by the feature calculation pipeline. If you choose <span class="keyword-highlight">Docker</span>, you will need to perform an additional step:
+    DDGWizard will automatically call the programs within the container images. Users only need to have either Docker or Singularity. If the user chooses Docker, an additional step is required:
     <p></p>
     </div>
 
@@ -305,8 +290,66 @@ the Feature Calculation Pipeline (for Outputting Feature-Enriched ΔΔG Data)
 .. raw:: html
 
     <div style="text-align: justify;">
-    If you choose Singularity, no additional configuration is required.
+    PROFbval uses GPL 3.0+ open-source license. Please read and accept its license before proceeding further.
     <p></p>
     </div>
 
+.. raw:: html
+
+    <div style="text-align: justify;">
+    <h4> (Optional) 11. Download SIFT 6.2.1</h4>
+    <p></p>
+    Users can download the SIFT 6.2.1 program for allowing DDGWizard to predict impact of amino acid substitution on protein function. Please visit <a href="https://sift.bii.a-star.edu.sg/www/code.html">Download SIFT 6.2.1</a> to download the <span class="keyword-highlight">sift6.2.1.tar.gz</span> file. Copy this compressed file to the path <span class="keyword-highlight">DDGWizard/bin/sift6_2_1/</span> and extract it. Use the following commands:
+    <p></p>
+    </div>
+
+.. code-block::
+
+     $ wget https://s3.amazonaws.com/sift-public/nsSNV/sift6.2.1.tar.gz
+     $ cp sift6.2.1.tar.gz DDGWizard/bin/sift6_2_1/
+     $ cd DDGWizard/bin/sift6_2_1/
+     $ tar -zxvf sift6.2.1.tar.gz
+     $ cp -r sift6.2.1/* .
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    SIFT 6.2.1 uses non-commercial license. Please read and accept the license file in its folder before proceeding further.
+    <p></p>
+    </div>
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    <h4>12. Make sure the programs of the DDGWizard have the executable permission</h4>
+    The programs of DDGWizard need the executable permission to run.
+    <p></p>
+    Return to the DDGWizard program folder and execute the command:
+    <p></p>
+    </div>
+
+.. raw:: html
+
+    <div class="highlight-default notranslate">
+    <div class="highlight">
+    <pre style="overflow: scroll">
+    $ cd DDGWizard/
+    $ chmod -R +x .
+    </pre>
+    </div>
+    </div>
+
+.. _`the Prediction Part`:
+
+ΔΔG Prediction Model (for Predicting ΔΔG)
+-----------------------------------------------
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    This subsection is for users who need to use the ΔΔG prediction model.
+    <p></p>
+    To use DDGWizard's ΔΔG prediction model, users are required to complete steps 1 to 8 (these are no longer optional) and execute step 12 of Feature Calculation Pipeline's installation part. Steps 9 to 11 are not required.
+    <p></p>
+    </div>
 

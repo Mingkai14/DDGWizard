@@ -53,7 +53,7 @@ Generate Feature-Enriched ΔΔG Data
         --blast_process_num 4 \
         --mode whole \
         --process_num 4 \
-        --container_type <b>&lt;Docker or Singularity&gt;</b>
+        --container_type <b>&lt;Docker or Singularity or None&gt;</b>
     </pre>
     </div>
     </div>
@@ -161,7 +161,7 @@ Generate Feature-Enriched ΔΔG Data
 
     <div style="text-align: justify;">
     (8). <span class="keyword-highlight">--container_type</span>
-    This parameter requires you to provide a value of <span class="keyword-highlight">D</span> or <span class="keyword-highlight">S</span>. The value of <span class="keyword-highlight">D</span> means using <span class="keyword-highlight">Docker</span> as container system, while the value of <span class="keyword-highlight">S</span> means using <span class="keyword-highlight">Singularity</span> as container system.
+    This parameter requires you to provide a value of <span class="keyword-highlight">D</span> or <span class="keyword-highlight">S</span> or <span class="keyword-highlight">-</span>. The value of <span class="keyword-highlight">D</span> means using <span class="keyword-highlight">Docker</span> as container system, the value of <span class="keyword-highlight">S</span> means using <span class="keyword-highlight">Singularity</span> as container system, and the value of <span class="keyword-highlight">-</span> means skipping running PROFbval.
     <p></p>
     </div>
 

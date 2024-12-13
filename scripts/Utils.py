@@ -951,6 +951,10 @@ def Clean_Main_Directory():
             continue
         if os.path.basename(file).startswith('.'):
             continue
+        if file.split('.')[len(file.split('.'))-1]=='md':
+            continue
+        if file=='LICENSE':
+            continue
         os.remove(file)
 
 
