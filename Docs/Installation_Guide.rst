@@ -105,16 +105,16 @@ Feature Calculation Pipeline (for Generating Feature-Enriched ΔΔG Data)
     <div style="text-align: justify;">
     <h4>3. Download NCBI-BLAST-2.13.0+</h4>
     <p></p>
-    Users need to download the NCBI-BLAST-2.13.0 program for allowing DDGWizard to carry out multiple sequence alignment (MSA). Please visit <a href="https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.13.0/">Download NCBI-BLAST-2.13.0+</a> to download the <span class="keyword-highlight">ncbi-blast-2.13.0+-src.tar.gz</span> file. Copy this compressed file to the path <span class="keyword-highlight">DDGWizard/bin/ncbi_blast_2_13_0+/</span> and extract it. Use the following commands:
+    Users need to download the NCBI-BLAST-2.13.0 program for allowing DDGWizard to carry out multiple sequence alignment (MSA). Please visit <a href="https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.13.0/">Download NCBI-BLAST-2.13.0+</a> to download the <span class="keyword-highlight">ncbi-blast-2.13.0+-x64-linux.tar.gz</span> file. Copy this compressed file to the path <span class="keyword-highlight">DDGWizard/bin/ncbi_blast_2_13_0+/</span> and extract it. Use the following commands:
     <p></p>
     </div>
 
 .. code-block::
 
-     $ wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.13.0/ncbi-blast-2.13.0+-src.tar.gz
-     $ cp ncbi-blast-2.13.0+-src.tar.gz DDGWizard/bin/ncbi_blast_2_13_0+/
+     $ wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.13.0/ncbi-blast-2.13.0+-x64-linux.tar.gz
+     $ cp ncbi-blast-2.13.0+-x64-linux.tar.gz DDGWizard/bin/ncbi_blast_2_13_0+/
      $ cd DDGWizard/bin/ncbi_blast_2_13_0+/
-     $ tar -zxvf ncbi-blast-2.13.0+-src.tar.gz
+     $ tar ncbi-blast-2.13.0+-x64-linux.tar.gz
      $ cp -r ncbi_blast_2_13_0+/* .
 
 .. raw:: html
