@@ -31,10 +31,56 @@ Generate Feature-Enriched ΔΔG Data
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>1. Running template</h4>
+    <h4>1. Prepare a Blast database</h4>
+    <p>A Blast database is required for the program to run. The program will use the path to the Blast database to invoke it and perform sequence alignment.</p>
+    <p></p>
+    To construct a Blast database, you first need to prepare a <span class="keyword-highlight">fasta</span> file of the protein sequence database.
+    <p></p>
+    The richness of the sequence database should be abundant. You can use your own <span class="keyword-highlight">fasta</span> database file, but we recommend downloading it from <a href="https://ftp.uniprot.org/pub/databases/uniprot/uniref/">Uniref Databases</a>.
+    <p></p>
+    Our program was tested using <a href="https://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref50/">Uniref50 database</a>.
+    <p></p>
+    If you download <span class="keyword-highlight">Uniref50 database</span>, you need to unzip it (taking Uniref50 as an example):
+    </div>
+
+.. code-block::
+
+    $ gzip -d uniref50.fasta.gz
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    You can obtain a <span class="keyword-highlight">fasta</span> file. Then use Blast suite to create a Blast database using obtained <span class="keyword-highlight">fasta</span> file.
+    <p></p>
+    Downloaded <span class="keyword-highlight">blast+ 2.13.0</span> should be in the path <span class="keyword-highlight">DDGWizard/bin/ncbi_blast_2_13_0+/</span>. Please use the command as follows:
+    <p></p>
+    </div>
+
+.. raw:: html
+
+    <div class="highlight-default notranslate">
+    <div class="highlight">
+    <pre style="overflow: scroll">
+    $ cd DDGWizard/bin/ncbi_blast_2_13_0+/bin/
+    $ ./makeblastdb -in <b>&lt;the path to fasta file&gt;</b> -dbtype prot -out <b>&lt;the path to save Blast database&gt;</b>/<b>&lt;the name to assign for Blast database&gt;</b> -parse_seqids
+    </pre>
+    </div>
+    </div>
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    This step will take some time, depending on the size of the database file and the performance of your computer system.
+    <p></p>
+    </div>
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    <h4>2. Running template</h4>
     <p>We first provide you with a running template of running DDGWizard's feature calculation pipeline, and then explain the specifics of each parameter in detail.</p>
     <p></p>
-    You can run the program with (this program also requires the prepared Blast database):
+    You can run the program with:
     <p></p>
     <div>
 
@@ -61,7 +107,7 @@ Generate Feature-Enriched ΔΔG Data
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>2. Parameter details</h4>
+    <h4>3. Parameter details</h4>
     Below are the details of the parameters for program to generate complete  ΔΔG feature set:
     <p></p>
     (1). <span class="keyword-highlight">raw_dataset_path</span>
@@ -168,7 +214,7 @@ Generate Feature-Enriched ΔΔG Data
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>3. Output</h4>
+    <h4>4. Output</h4>
     There will be an output <span class="keyword-highlight">csv</span> file <span class="keyword-highlight">features_table.csv</span> located in <span class="keyword-highlight">DDGWizard/src/Features_Table/</span>, which will record complete generated features.
     <p></p>
     </div>
@@ -177,7 +223,7 @@ Generate Feature-Enriched ΔΔG Data
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4>4. Notes</h4>
+    <h4>5. Notes</h4>
     <p></p>
     </div>
 
