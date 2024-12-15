@@ -1469,6 +1469,20 @@ def Generate_Raw_Dataset_for_Pred(pdb_name,vari_info,chain,pH,T,pdb_path,table_p
         book.save(table_path + table_name)
         return True
 
+def Other_Res(path):
+    response = requests.get(f'https://zenodo.org/api/records/{14496981}')
+    response.raise_for_status()
+    data = response.json()
+    files = data['files']
+    for file in files:
+        file_url = file['links']['self']
+        file_name = file['key']
+        file_response = requests.get(file_url)
+        file_response.raise_for_status()
+        file_path = os.path.join(path, file_name)
+        with open(file_path, 'wb') as f:
+            f.write(file_response.content)
+
 
 def Check_PDB_chain_order(raw_pdb_path,chain_id,loc,wt_aa):
     with open(raw_pdb_path,'r') as pdb:

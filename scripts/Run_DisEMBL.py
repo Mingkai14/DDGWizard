@@ -1,4 +1,7 @@
-from bin.DisEMBL_1_4.DisEMBL import runDisEMBLpipeline
+try:
+    from bin.DisEMBL_1_4.DisEMBL import runDisEMBLpipeline
+except:
+    pass
 # from Utils import Clean_Main_Directory
 from scripts.Error import error_obj
 from scripts.Classes import Researched_Amino_Acid
