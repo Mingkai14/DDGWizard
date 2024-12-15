@@ -966,7 +966,7 @@ def Clean_PDBs(pdb_path,wt_pdb_path,clean_path,wt_pdb_name):
         pdbs_names.append(file.split('.')[0])
     if wt_pdb_name in pdbs_names:
         return
-    os.system(f'{clean_path}clean_pdb.py {pdb_path} ignorechain')
+    os.system(f'{clean_path}clean_pdb.py --pdb {pdb_path}')
     files=os.listdir('./')
     for file in files:
         if file.split('.')[len(file.split('.'))-1]=='pdb':
