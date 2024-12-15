@@ -112,7 +112,7 @@ Feature Calculation Pipeline (for Generating Feature-Enriched ΔΔG Data)
 .. code-block::
 
      $ wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.13.0/ncbi-blast-2.13.0+-x64-linux.tar.gz
-     $ cp ncbi-blast-2.13.0+-src.tar.gz DDGWizard/bin/ncbi_blast_2_13_0+/
+     $ cp ncbi-blast-2.13.0+-x64-linux.tar.gz DDGWizard/bin/ncbi_blast_2_13_0+/
      $ cd DDGWizard/bin/ncbi_blast_2_13_0+/
      $ tar -zxvf ncbi-blast-2.13.0+-x64-linux.tar.gz
      $ cp -r ncbi-blast-2.13.0+/* .
@@ -162,8 +162,20 @@ Feature Calculation Pipeline (for Generating Feature-Enriched ΔΔG Data)
 .. raw:: html
 
     <div style="text-align: justify;">
-    <h4> To use DDGWizard feature calculation pipeline, the following software is optional and not required to be installed (if certain software is not installed, the feature values it calculates will not be output).</h4>
+    <h4> To use DDGWizard feature calculation pipeline, the following software is optional (step 5-11) and not required to be installed (if certain software is not installed, the feature values it calculates will not be output).</h4>
     <p></p>
+    <h4>Before running, please don't forget to make sure the programs of the DDGWizard have the executable permission (step 12). Return to the DDGWizard program folder and execute the command:</h4>
+    </div>
+
+.. raw:: html
+
+    <div class="highlight-default notranslate">
+    <div class="highlight">
+    <pre style="overflow: scroll">
+    $ cd DDGWizard/
+    $ chmod -R +x .
+    </pre>
+    </div>
     </div>
 
 .. raw:: html
