@@ -108,26 +108,25 @@ def Prepare_Table(Raw_Data_List,Table_Path,Res_Table_Name,Clean_Path,Raw_PDB_Pat
                 continue
             right_count+=1
         else:
-            PDB_Name=Raw_Data[0]
-            PDB_Path=Raw_Data[1]
-            Mut_Info=Raw_Data[2]
-            if isinstance(Raw_Data[3], str):
-                Chain_ID = Raw_Data[3]
+            Raw_PDB_Num=Raw_Data[0]
+            Mut_Info=Raw_Data[1]
+            if isinstance(Raw_Data[2], str):
+                Chain_ID = Raw_Data[2]
             else:
                 try:
-                    Chain_ID = str(int(Raw_Data[3]))
+                    Chain_ID = str(int(Raw_Data[2]))
                 except:
-                    error_obj.Something_Wrong(Prepare, f'Check xls file {PDB_Name}')
+                    error_obj.Something_Wrong(Prepare, f'Check xls file {Raw_PDB_Num}')
                     wrong_count += 1
                     continue
-            pH=Raw_Data[4]
-            T=Raw_Data[5]
-            if str(PDB_Name).find('_')!=-1:
-                error_obj.Something_Wrong(Prepare,f'Check xls file {PDB_Name}')
+            pH=Raw_Data[3]
+            T=Raw_Data[4]
+            if str(Raw_PDB_Num).find('_')!=-1:
+                error_obj.Something_Wrong(Prepare,f'Check xls file {Raw_PDB_Num}')
                 wrong_count += 1
                 continue
             from scripts.Global_Value import Pred_Table_Path,Pred_Table_Name
-            if not Prepare_for_Pred(Pred_Table_Path,Clean_Path,Pred_Table_Name,PDB_Name,PDB_Path,Mut_Info,Chain_ID,pH,T,WT_PDB_Path,MUT_PDB_Path,WT_Fasta_Path,MUT_Fasta_Path,WT_PSSM_Data_Path,MUT_PSSM_Data_Path,WT_PSI_BLAST_Data_Path,MUT_PSI_BLAST_Data_Path):
+            if not Prepare_for_Pred(Pred_Table_Path,Clean_Path,Pred_Table_Name,Raw_PDB_Num,Mut_Info,Chain_ID,pH,T,Raw_PDB_Num,WT_PDB_Path,MUT_PDB_Path,WT_Fasta_Path,MUT_Fasta_Path,WT_PSSM_Data_Path,MUT_PSSM_Data_Path,WT_PSI_BLAST_Data_Path,MUT_PSI_BLAST_Data_Path):
                 error_obj.Something_Wrong(__name__, Raw_Data[0] + '_' + Raw_Data[2])
                 wrong_count += 1
                 continue
@@ -244,10 +243,10 @@ def Prepare(table_path,clean_path,res_table_name,raw_pdb_num,mut_info,chain_id,p
     return True
 
 
-def Prepare_for_Pred(table_path,clean_path,res_table_name,pdb_name,pdb_path,mut_info,chain_id,pH,temperature,w_pdb_path,m_pdb_path,raw_fasta_path,m_fasta_path,wt_pssm_data_path,mut_pssm_data_path,wt_psi_blast_data_path,mut_psi_blast_data_path):
+def Prepare_for_Pred(table_path,clean_path,res_table_name,raw_pdb_num,mut_info,chain_id,pH,temperature,raw_pdb_path,w_pdb_path,m_pdb_path,raw_fasta_path,m_fasta_path,wt_pssm_data_path,mut_pssm_data_path,wt_psi_blast_data_path,mut_psi_blast_data_path):
     try:
         pH_T = str(pH).replace('.', '') + str(temperature).replace('.', '')
-        id = pdb_name + '_' + chain_id + '_' + mut_info+'_'+pH_T
+        id = raw_pdb_num + '_' + chain_id + '_' + mut_info + '_' + pH_T
         wt_aa_short=mut_info[0]
         mut_aa_short=mut_info[-1]
         foo=str(mut_info).replace(wt_aa_short,'').replace(mut_aa_short,'')
@@ -258,27 +257,38 @@ def Prepare_for_Pred(table_path,clean_path,res_table_name,pdb_name,pdb_path,mut_
     except:
         error_obj.Something_Wrong(Prepare_for_Pred.__name__)
         return False
+    if not Fetch_PDB(raw_pdb_num,raw_pdb_path):
+        error_obj.Something_Wrong(Prepare.__name__)
+        return False
 
-    Is_Beta = Check_Is_Beta(pdb_path)
+    Is_Beta = Check_Is_Beta(raw_pdb_path+raw_pdb_num+'.pdb')
     if Is_Beta:
         is_beta='1'
     else:
         is_beta='0'
-
     if Is_Beta:
-        error_obj.Something_Wrong(Prepare_for_Pred.__name__,f'In this {id} pdb, chain number has problem')
-        return False
+        res=Check_PDB_chain_order(raw_pdb_path+raw_pdb_num+'.pdb',chain_id,loc,wt_aa_short)
+        if res is False:
+            error_obj.Something_Wrong(Prepare.__name__)
+            return False
+        else:
+            if res[0]==False:
+                pass
+            else:
+                chain_id=res[1]
 
-    true_loc = Get_True_Loc(loc, wt_aa_short, pdb_path,chain_id)
+    true_loc = Get_True_Loc(loc, wt_aa_short, raw_pdb_path+raw_pdb_num+'.pdb',chain_id)
     if true_loc is False:
         error_obj.Something_Wrong(Prepare_for_Pred.__name__,'Something wrong in PDB file')
         return False
-    wt_pdb_name = pdb_name
+    wt_pdb_name = raw_pdb_num
     wt_pdb_path = w_pdb_path + wt_pdb_name + '.pdb'
-    Clean_PDBs(pdb_path,w_pdb_path,clean_path,wt_pdb_name)
+    Clean_PDBs(raw_pdb_path+raw_pdb_num+'.pdb',w_pdb_path,clean_path,wt_pdb_name)
     if not os.path.exists(wt_pdb_path):
         error_obj.Something_Wrong(Prepare_for_Pred.__name__, 'PDB can not be cleaned, may only have CA')
         return False
+    if Is_Beta:
+        os.remove(raw_pdb_path+raw_pdb_num+'.pdb')
     if not Fetch_Fasta_from_PDB(wt_pdb_path,wt_pdb_name,raw_fasta_path):
         error_obj.Something_Wrong(Prepare_for_Pred.__name__)
         return False
@@ -1260,7 +1270,7 @@ def Read_Pred_XLS(Raw_Dataset_File):
     header=[]
     for i in range(column):
         header.append(rs.cell_value(0,i))
-    if header!=['Name','PDB_File_Path','Variation','Chain','pH','T']:
+    if header!=['PDB','Amino Acid Substitution','Chain ID','pH','T']:
         error_obj.Something_Wrong(Read_Pred_XLS.__name__, 'check pred_dataset, lack header')
         exit(1)
     Raw_Data_List = []
@@ -1271,39 +1281,17 @@ def Read_Pred_XLS(Raw_Dataset_File):
         Raw_Data_List.append(list_)
     check_dict={}
     for row in Raw_Data_List:
-        if len(row)!=6:
+        if len(row)!=5:
             error_obj.Something_Wrong(Read_Pred_XLS.__name__, 'check pred_dataset, lack column')
             exit(1)
         for item in row:
             if item=='':
                 error_obj.Something_Wrong(Read_Pred_XLS.__name__, 'check pred_dataset, empty value')
                 exit(1)
-        if str(row[1]).split('.')[-1]!='pdb':
-            error_obj.Something_Wrong(Read_Pred_XLS.__name__, 'check pred_dataset, wrong file format of pdb')
-            exit(1)
-        if not os.path.exists(row[1]):
-            error_obj.Something_Wrong(Read_Pred_XLS.__name__, 'check pred_dataset, pdb file is not existed')
-            exit(1)
-        if not os.path.isabs(row[1]):
-            row[1] = os.path.abspath(row[1])
-            if not os.path.exists(row[1]):
-                error_obj.Something_Wrong(Read_Pred_XLS.__name__, 'check pred_dataset, pdb file is not existed')
-                exit(1)
-        if len(row[0])>8:
-            error_obj.Something_Wrong(Read_Pred_XLS.__name__, 'name of protein is too long, should be less than 8')
-            exit(1)
-        if str(row[0]).find('_')!=-1:
-            error_obj.Something_Wrong(Read_Pred_XLS.__name__, 'wrong characters in your protein name')
-            exit(1)
-        if row[0] not in check_dict.keys():
-            check_dict[row[0]]=row[1]
-        else:
-            if row[1]!=check_dict[row[0]]:
-                error_obj.Something_Wrong(Read_Pred_XLS.__name__, 'protein name correspond to more than one pdb path')
-                exit(1)
+
     temp_list=[]
     for data_list in Raw_Data_List:
-        unique=data_list[0]+'_'+data_list[2]+'_'+str(data_list[3])+'_'+str(data_list[4]).replace('.','')+str(data_list[5]).replace('.','')
+        unique = data_list[0] + '_' + data_list[1] + '_' + str(data_list[2]) + '_' + str(data_list[3]).replace('.','') + str(data_list[4]).replace('.', '')
         temp_list.append(unique)
     temp_set=set(temp_list)
     if len(temp_list)!=len(temp_set):
