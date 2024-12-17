@@ -40,7 +40,7 @@ if __name__ == '__main__':
     if args.raw_dataset_path=='' or args.db_folder_path=='' or args.db_name=='' or args.if_reversed_data not in [0,1] or args.blast_process_num<1 or args.blast_process_num>200 or args.process_num>200 or args.process_num<1:
         error_obj.Something_Wrong(__name__)
         exit(1)
-    if str(args.raw_dataset_path).split('.')[len(str(args.raw_dataset_path).split('.'))-1]!='xls':
+    if str(args.raw_dataset_path).split('.')[len(str(args.raw_dataset_path).split('.'))-1]!='csv':
         error_obj.Something_Wrong(__name__)
         exit(1)
     if not os.path.exists(args.raw_dataset_path):
@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
         Log('Reading raw dataset ')
         print('Reading raw dataset ')
-        Raw_Data_List = Read_XLS(scripts.Global_Value.Raw_Dataset_file)
+        Raw_Data_List = Read_CSV(scripts.Global_Value.Raw_Dataset_file)
 
         Log('Clearing folders')
         print('Clearing folders')
@@ -133,8 +133,8 @@ if __name__ == '__main__':
     Clean_Main_Directory()
 
 
-    Log('Cleaning temporary folder in ./src/TMP/')
-    print('Cleaning temporary folder in ./src/TMP/')
+    Log('Cleaning temporary folder in ./Src/TMP/')
+    print('Cleaning temporary folder in ./Src/TMP/')
     import shutil
     shutil.rmtree(TMP_Path)
     os.mkdir(TMP_Path)

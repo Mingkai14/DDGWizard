@@ -1,20 +1,20 @@
 import warnings
 warnings.filterwarnings("ignore")
-from scripts.Log import Log, Init_Log
+from Scripts.Log import Log, Init_Log
 import argparse
 import joblib
 import pandas as pd
-from scripts.Error import error_obj
-from scripts.Utils import amino_acid_map
-import scripts.Global_Value
-from scripts.Global_Value import *
-from scripts.Init import Init
-from scripts.Utils import *
-from scripts.Feature_Extracting_Pred import *
-from scripts.Run_Modeller import *
-from scripts.MSA import *
-from scripts.Record import Record_Feature_Table
-from ml.DDGWizard import XGBoostRegression_Predict
+from Scripts.Error import error_obj
+from Scripts.Utils import amino_acid_map
+import Scripts.Global_Value
+from Scripts.Global_Value import *
+from Scripts.Init import Init
+from Scripts.Utils import *
+from Scripts.Feature_Extracting_Pred import *
+from Scripts.Run_Modeller import *
+from Scripts.MSA import *
+from Scripts.Record import Record_Feature_Table
+from Prediction.DDGWizard import XGBoostRegression_Predict
 
 if __name__ == '__main__':
     Init_Log()
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     if pred_dataset_path=='' or db_folder_path=='' or db_name=='' or args.if_reversed_data not in [0,1] or blast_process_num<1 or blast_process_num>200 or process_num>200 or process_num<1:
         error_obj.Something_Wrong(__name__,'Check your arguments')
         exit(1)
-    if str(pred_dataset_path).split('.')[-1]!='xls':
+    if str(pred_dataset_path).split('.')[-1]!='csv':
         error_obj.Something_Wrong(__name__,'Check format of your pred_dataset')
         exit(1)
     if not os.path.exists(pred_dataset_path):
@@ -84,7 +84,7 @@ if __name__ == '__main__':
 
         Log('Reading pred dataset ')
         print('Reading pred dataset ')
-        Pred_Data_List = Read_Pred_XLS(pred_dataset_path)
+        Pred_Data_List = Read_Pred_CSV(pred_dataset_path)
 
         Log('Clearing')
         print('Clearing')
@@ -146,8 +146,8 @@ if __name__ == '__main__':
     Clean_Main_Directory()
 
 
-    Log('Cleaning temporary folder in ./src/TMP/')
-    print('Cleaning temporary folder in ./src/TMP/')
+    Log('Cleaning temporary folder in ./Src/TMP/')
+    print('Cleaning temporary folder in ./Src/TMP/')
     import shutil
     shutil.rmtree(TMP_Path)
     os.mkdir(TMP_Path)
