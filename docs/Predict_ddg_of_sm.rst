@@ -28,7 +28,7 @@ Predict ΔΔG for Saturation Mutagenesis
     <p></p>
     Saturation mutagenesis represents mutating the original amino acid residue at the same mutation site to all possible amino acids. In practical applications, users often require predicting the ΔΔG of saturation mutagenesis at one or all amino acid sites, thereby assessing which mutations may enhance thermostability of the protein based on a wide range of possibilities.
     <p></p>
-    To meet this practical user's need, we have prepared a program to help users quickly generate the needed <span class="keyword-highlight">xls</span> file for saturation mutagenesis. This file serves as input for DDGWizard to predict the ΔΔG of saturation mutagenesis.
+    To meet this practical user's need, we have prepared a program to help users quickly generate the needed <span class="keyword-highlight">csv</span> file for saturation mutagenesis. This file serves as input for DDGWizard to predict the ΔΔG of saturation mutagenesis.
     <p></p>
     </div>
 
@@ -36,9 +36,9 @@ Predict ΔΔG for Saturation Mutagenesis
 
     <div style="text-align: justify;">
     <h4>1. Running example</h4>
-    <p>Similarly, we first provide two examples of running this program, followed by a detailed explanation of the program parameters. We selected the protein <span class="keyword-highlight">1SHG</span> from <span class="keyword-highlight">DDGWizard/src/pdbs/</span> as a case study.</p>
+    <p>Similarly, we first provide two examples of running this program, followed by a detailed explanation of the program parameters. We selected the protein <span class="keyword-highlight">1SHG</span> as a case study.</p>
     <p></p>
-    If you want to predict the ΔΔG of saturation mutagenesis at a single site (e.g. number 57 amino acid site), you can run the program with:
+    For predicting the ΔΔG of saturation mutagenesis at a single site (e.g. number 57 amino acid site), run the program with:
     <p></p>
     <div>
 
@@ -50,9 +50,8 @@ Predict ΔΔG for Saturation Mutagenesis
     $ conda activate DDGWizard
     $ cd DDGWizard/
     $ python utility_tool.py \
-       --pdb_name 1SHG \
-       --pdb_path ./src/pdbs/1shg.pdb \
-       --chain A \
+       --pdb_id 1SHG \
+       --chain_id A \
        --site_number 57 \
        --wt_aa Y \
        --pH 7 \
@@ -66,7 +65,7 @@ Predict ΔΔG for Saturation Mutagenesis
 
     <div style="text-align: justify;">
     <p></p>
-    If you want to predict the ΔΔG of full-site saturation mutagenesis, you can run the program with:
+    For predicting the ΔΔG of full-site saturation mutagenesis, run the program with:
     <p></p>
     <div>
 
@@ -78,8 +77,7 @@ Predict ΔΔG for Saturation Mutagenesis
     $ conda activate DDGWizard
     $ cd DDGWizard/
     $ python utility_tool.py \
-       --pdb_name 1SHG \
-       --pdb_path ./src/pdbs/1shg.pdb \
+       --pdb_id 1SHG \
        --site_number all \
        --pH 7 \
        --T 25
@@ -92,28 +90,22 @@ Predict ΔΔG for Saturation Mutagenesis
     <div style="text-align: justify;">
     <h4>2. Parameter details</h4>
     Below are the details of the parameters for the program of saturation mutagenesis:
+
+.. raw:: html
+
+    <div style="text-align: justify;">
+    (1). <span class="keyword-highlight">--pdb_id</span>
     <p></p>
-    (1). <span class="keyword-highlight">----pdb_name</span>
-    <p></p>
-    This parameter indicates that you need to provide a name to label the predicted protein. It corresponds the <span class="keyword-highlight">Name</span> attribute of generated <span class="keyword-highlight">xls</span> file.
+    Provide a <span class="keyword-highlight">PDB</span> identifier that allow program can automatically download the <span class="keyword-highlight">PDB</span> file.
     <p></p>
     <div>
 
 .. raw:: html
 
     <div style="text-align: justify;">
-    (2). <span class="keyword-highlight">----pdb_path</span>
+    (2). <span class="keyword-highlight">--chain_id</span>
     <p></p>
-    This parameter indicates that you need to provide a path to the <span class="keyword-highlight">PDB</span> file of the predicted protein. It corresponds the <span class="keyword-highlight">PDB_File_Path</span> attribute of generated <span class="keyword-highlight">xls</span> file.
-    <p></p>
-    <div>
-
-.. raw:: html
-
-    <div style="text-align: justify;">
-    (3). <span class="keyword-highlight">--chain</span>
-    <p></p>
-    This parameter indicates that you need to provide the chain identifier of the protein where the predicted mutation are located. It corresponds the <span class="keyword-highlight">Chain</span> attribute of generated <span class="keyword-highlight">xls</span> file.
+    Indicate the protein chain where the mutation site is located.
     <p></p>
     If you intend to predict the ΔΔG of full-site saturation mutagenesis and the parameter <span class="keyword-highlight">--site_number</span> was provided with the value <span class="keyword-highlight">all</span>, you don't need to provide this parameter. The program will automatically match the chain identifier for all possible mutations.
     <p></p>
@@ -122,7 +114,7 @@ Predict ΔΔG for Saturation Mutagenesis
 .. raw:: html
 
     <div style="text-align: justify;">
-    (4). <span class="keyword-highlight">--site_number</span>
+    (3). <span class="keyword-highlight">--site_number</span>
     <p></p>
     This parameter indicates that you need to provide the site number of the predicted mutation.
     <p></p>
@@ -133,7 +125,7 @@ Predict ΔΔG for Saturation Mutagenesis
 .. raw:: html
 
     <div style="text-align: justify;">
-    (5). <span class="keyword-highlight">--wt_aa</span>
+    (4). <span class="keyword-highlight">--wt_aa</span>
     <p></p>
     This parameter indicates that you need to provide the wild-type amino acid of the predicted mutation.
     <p></p>
@@ -144,18 +136,18 @@ Predict ΔΔG for Saturation Mutagenesis
 .. raw:: html
 
     <div style="text-align: justify;">
-    (6). <span class="keyword-highlight">--pH</span>
+    (5). <span class="keyword-highlight">--pH</span>
     <p></p>
-    This parameter indicates that you need to specify at which pH you want to predict the ΔΔG for the mutations. It corresponds the <span class="keyword-highlight">pH</span> attribute of generated <span class="keyword-highlight">xls</span> file.
+    This parameter indicates that you need to specify at which pH you want to predict the ΔΔG for the mutations.
     <p></p>
     <div>
 
 .. raw:: html
 
     <div style="text-align: justify;">
-    (7). <span class="keyword-highlight">--T</span>
+    (6). <span class="keyword-highlight">--T</span>
     <p></p>
-    This parameter indicates that you need to specify at which temperature you want to predict the ΔΔG for the mutations. It corresponds the <span class="keyword-highlight">T</span> attribute of generated <span class="keyword-highlight">xls</span> file.
+    This parameter indicates that you need to specify at which temperature you want to predict the ΔΔG for the mutations.
     <p></p>
     <div>
 
@@ -163,9 +155,9 @@ Predict ΔΔG for Saturation Mutagenesis
 
     <div style="text-align: justify;">
     <h4>3. Output</h4>
-    The program will generate an output xls file <span class="keyword-highlight">pred.xls</span> located in <span class="keyword-highlight">DDGWizard/src/</span>.
+    The program will generate an output csv file <span class="keyword-highlight">Pred.csv</span> located in <span class="keyword-highlight">DDGWizard/src/</span>.
     <p></p>
-    This <span class="keyword-highlight">xls</span> file can be directly used as input for the DDGWizard prediction program, enabling quick preparation for ΔΔG prediction of saturation mutagenesis:
+    This <span class="keyword-highlight">csv</span> file can be directly used as input for the DDGWizard prediction program, enabling quick preparation for ΔΔG prediction of saturation mutagenesis:
     <p></p>
     </div>
 
@@ -177,7 +169,7 @@ Predict ΔΔG for Saturation Mutagenesis
     $ conda activate DDGWizard
     $ cd DDGWizard/
     $ python Predict_ddG_Executable.py \
-        --pred_dataset_path ./src/pred.xls \
+        --pred_dataset_path ./src/Pred.csv \
         --db_folder_path <b>&lt;the path to save Blast database&gt;</b> \
         --db_name <b>&lt;the name to assign for Blast database&gt;</b> \
         --if_reversed_data 0 \

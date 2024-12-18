@@ -10,8 +10,8 @@ from Scripts.Log import Log
 import Scripts.Global_Value
 from Scripts.Error import error_obj
 from Scripts.Classes import *
-from Bin.rdkit_2023_3_1.rdkit_compute import Compute_Pharmacophore_with_Rdkit,Check_Available_PDB_with_Rdkit
-from Bin.Protlego.Hydrophobic_cluster import *
+from bin.rdkit_2023_3_1.rdkit_compute import Compute_Pharmacophore_with_Rdkit,Check_Available_PDB_with_Rdkit
+from bin.Protlego.Hydrophobic_cluster import *
 from math import sqrt,pow
 from Scripts.Docker import Docker_Remove_Container
 from Scripts.Global_Value import Log_Path

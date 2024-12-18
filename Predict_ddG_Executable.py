@@ -66,16 +66,16 @@ if __name__ == '__main__':
 
 
 
-    scripts.Global_Value.MSA_DB_Path = db_folder_path
-    scripts.Global_Value.MSA_DB_Name = db_name
-    scripts.Global_Value.Is_Use_Reverse_Data = if_reversed_data
-    scripts.Global_Value.BLAST_Process_Num = blast_process_num
-    scripts.Global_Value.Mode = mode
-    scripts.Global_Value.Process_Num = process_num
-    scripts.Global_Value.Is_Pred=1
+    Scripts.Global_Value.MSA_DB_Path = db_folder_path
+    Scripts.Global_Value.MSA_DB_Name = db_name
+    Scripts.Global_Value.Is_Use_Reverse_Data = if_reversed_data
+    Scripts.Global_Value.BLAST_Process_Num = blast_process_num
+    Scripts.Global_Value.Mode = mode
+    Scripts.Global_Value.Process_Num = process_num
+    Scripts.Global_Value.Is_Pred=1
 
-    Log(f'Your input arguments:\n--pred_dataset_path:{pred_dataset_path}\n--db_folder_path:{scripts.Global_Value.MSA_DB_Path}\n--db_name:{scripts.Global_Value.MSA_DB_Name}\n--if_reversed_data:{scripts.Global_Value.Is_Use_Reverse_Data}\n--blast_process_num:{scripts.Global_Value.BLAST_Process_Num}\n--mode:{scripts.Global_Value.Mode}\n--process_num:{scripts.Global_Value.Process_Num}\n')
-    print(f'Your input arguments:\n--pred_dataset_path:{pred_dataset_path}\n--db_folder_path:{scripts.Global_Value.MSA_DB_Path}\n--db_name:{scripts.Global_Value.MSA_DB_Name}\n--if_reversed_data:{scripts.Global_Value.Is_Use_Reverse_Data}\n--blast_process_num:{scripts.Global_Value.BLAST_Process_Num}\n--mode:{scripts.Global_Value.Mode}\n--process_num:{scripts.Global_Value.Process_Num}\n')
+    Log(f'Your input arguments:\n--pred_dataset_path:{pred_dataset_path}\n--db_folder_path:{Scripts.Global_Value.MSA_DB_Path}\n--db_name:{Scripts.Global_Value.MSA_DB_Name}\n--if_reversed_data:{Scripts.Global_Value.Is_Use_Reverse_Data}\n--blast_process_num:{Scripts.Global_Value.BLAST_Process_Num}\n--mode:{Scripts.Global_Value.Mode}\n--process_num:{Scripts.Global_Value.Process_Num}\n')
+    print(f'Your input arguments:\n--pred_dataset_path:{pred_dataset_path}\n--db_folder_path:{Scripts.Global_Value.MSA_DB_Path}\n--db_name:{Scripts.Global_Value.MSA_DB_Name}\n--if_reversed_data:{Scripts.Global_Value.Is_Use_Reverse_Data}\n--blast_process_num:{Scripts.Global_Value.BLAST_Process_Num}\n--mode:{Scripts.Global_Value.Mode}\n--process_num:{Scripts.Global_Value.Process_Num}\n')
 
     try:
         Log('Initing configuration')
@@ -99,29 +99,29 @@ if __name__ == '__main__':
 
 
 
-        if scripts.Global_Value.Mode=='whole' or scripts.Global_Value.Mode=='model_only':
+        if Scripts.Global_Value.Mode=='whole' or Scripts.Global_Value.Mode=='model_only':
             Log('Modelling MUT models')
             print('Modelling MUT models')
             Prepare_MUT_Models(Pred_Table_Path,Pred_Table_Name,MUT_PDB_Path,process_num)
 
-        if scripts.Global_Value.Mode=='whole' or scripts.Global_Value.Mode=='blast_only':
+        if Scripts.Global_Value.Mode=='whole' or Scripts.Global_Value.Mode=='blast_only':
             Log('Preparing Blast files')
             print('Preparing Blast files')
             Prepare_Blast_Files(Pred_Table_Path, Pred_Table_Name, WT_PSSM_Data_Path, MUT_PSSM_Data_Path,
                                 WT_PSI_BLAST_Data_Path, MUT_PSI_BLAST_Data_Path, WT_BLASTP_Data_Path,
-                                MUT_BLASTP_Data_Path, scripts.Global_Value.MSA_DB_Path,
-                                scripts.Global_Value.MSA_DB_Name)
+                                MUT_BLASTP_Data_Path, Scripts.Global_Value.MSA_DB_Path,
+                                Scripts.Global_Value.MSA_DB_Name)
 
-        if scripts.Global_Value.Mode=='whole' and scripts.Global_Value.Is_Use_Reverse_Data:
+        if Scripts.Global_Value.Mode=='whole' and Scripts.Global_Value.Is_Use_Reverse_Data:
             Log('Adding reverse task')
             print('Adding reverse task')
             Add_Reverse_Data(Pred_Table_Path,Pred_Table_Name)
 
-        if scripts.Global_Value.Mode == 'whole':
+        if Scripts.Global_Value.Mode == 'whole':
             Feature_Object_List = []
             Log('Beginning features extraction')
             print('Beginning features extraction')
-            Feature_Extraction(Pred_Table_Path, Pred_Table_Name, Feature_Object_List,scripts.Global_Value.Process_Num)
+            Feature_Extraction(Pred_Table_Path, Pred_Table_Name, Feature_Object_List,Scripts.Global_Value.Process_Num)
 
             Log('Recording features results')
             print('Recording features results')
@@ -146,8 +146,8 @@ if __name__ == '__main__':
     Clean_Main_Directory()
 
 
-    Log('Cleaning temporary folder in ./Src/TMP/')
-    print('Cleaning temporary folder in ./Src/TMP/')
+    Log('Cleaning temporary folder in ./src/TMP/')
+    print('Cleaning temporary folder in ./src/TMP/')
     import shutil
     shutil.rmtree(TMP_Path)
     os.mkdir(TMP_Path)

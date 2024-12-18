@@ -92,9 +92,9 @@ if __name__ == '__main__':
                         wt_list.append(temp_list)
 
     import csv
-    with open('./Src/Pred.csv', mode='w', encoding='utf-8', newline='') as file:
+    with open('./src/Pred.csv', mode='w', encoding='utf-8', newline='') as file:
         writer = csv.writer(file)
         writer.writerows(wt_list)
 
-    print('The input CSV file for prediction has already been saved in ./Src/Pred.csv')
-    print('Next, you can use like \' python Predict_ddG_Executable.py --pred_dataset_path ./Src/Pred.csv --db_folder_path Your_Path/Blast_DB_Folder/ --db_name Your_DB_Name --if_reversed_data 0 --blast_process_num 4 --mode whole --process_num 4 \' to perform the prediction')
+    print('The input CSV file for prediction has already been saved in ./src/Pred.csv')
+    print('Next, you can use like \' python Predict_ddG_Executable.py --pred_dataset_path ./src/Pred.csv --db_folder_path Your_Path/Blast_DB_Folder/ --db_name Your_DB_Name --if_reversed_data 0 --blast_process_num 4 --mode whole --process_num 4 \' to perform the prediction')

@@ -63,7 +63,7 @@ Feature Calculation Pipeline (for Generating Feature-Enriched ΔΔG Data)
     <div style="text-align: justify;">
     <h4>2. Config and install conda virtual environment</h4>
     <p></p>
-    <p>There is an <span class="keyword-highlight">environment.yml</span> file located in the path <span class="keyword-highlight">DDGWizard/src</span>, which is the Conda environment configuration file.</p>
+    <p>There is an <span class="keyword-highlight">Environment.yml</span> file located in the path <span class="keyword-highlight">DDGWizard/src</span>, which is the Conda environment configuration file.</p>
     <p></p>
     <p>Open this file with your text editor (e.g., nano, vim, vi, etc.). Here we use vi as an example:</p>
     <p></p>
@@ -72,7 +72,7 @@ Feature Calculation Pipeline (for Generating Feature-Enriched ΔΔG Data)
 .. code-block::
 
     $ cd DDGWizard/src/
-    $ vi environment.yml
+    $ vi Environment.yml
 
 .. raw:: html
 
@@ -92,13 +92,13 @@ Feature Calculation Pipeline (for Generating Feature-Enriched ΔΔG Data)
 .. raw:: html
 
     <div style="text-align: justify;">
-    <p>Once you have changed the <span class="keyword-highlight">prefix</span> of <span class="keyword-highlight">environment.yml</span> file, you can use Conda commands to create a Conda virtual environment and install dependencies. This may take some time.</p>
+    <p>Once user have changed the <span class="keyword-highlight">prefix</span> of <span class="keyword-highlight">Environment.yml</span> file, please use Conda commands to create a Conda virtual environment and install dependencies. This may take some time.</p>
     <p></p>
     </div>
 
 .. code-block::
 
-     $ conda env create -f environment.yml
+     $ conda env create -f Environment.yml
 
 .. raw:: html
 
@@ -115,7 +115,7 @@ Feature Calculation Pipeline (for Generating Feature-Enriched ΔΔG Data)
      $ cp ncbi-blast-2.13.0+-x64-linux.tar.gz DDGWizard/bin/ncbi_blast_2_13_0+/
      $ cd DDGWizard/bin/ncbi_blast_2_13_0+/
      $ tar -zxvf ncbi-blast-2.13.0+-x64-linux.tar.gz
-     $ cp -r ncbi-blast-2.13.0+/* .
+     $ cp -r ncbi_blast_2_13_0+/* .
 
 .. raw:: html
 
@@ -361,7 +361,7 @@ Feature Calculation Pipeline (for Generating Feature-Enriched ΔΔG Data)
     <div style="text-align: justify;">
     This subsection is for users who need to use the ΔΔG prediction model.
     <p></p>
-    To use DDGWizard's ΔΔG prediction model, users are required to complete steps 1 to 8 (these are no longer optional) and execute step 12 of Feature Calculation Pipeline's installation part. Steps 9 to 11 are not required.
+    To use DDGWizard's ΔΔG prediction model, users are required to complete steps 1-8 (these are no longer optional) and execute step 12 of Feature Calculation Pipeline's installation part. Steps 9-11 are not required.
     <p></p>
     </div>
 

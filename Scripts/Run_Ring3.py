@@ -17,7 +17,7 @@ def Run_Ring(pdb_path,ring_bin_path,bond_list:list,temp_path,o_folder_name):
     :outpath:temp_path/o_folder_name/
     :process: Make saving path in TMP, call ring3 to run and read results to return
     '''
-    from scripts.Global_Value import Ring_Expired_Date
+    from Scripts.Global_Value import Ring_Expired_Date
     from datetime import datetime
     now = datetime.now()
     date_format = "%Y-%m-%d"

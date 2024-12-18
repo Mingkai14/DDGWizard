@@ -92,7 +92,7 @@ Generate Feature-Enriched ΔΔG Data
     $ conda activate DDGWizard
     $ cd DDGWizard/
     $ python Generate_Dataset_Executable.py \
-        --raw_dataset_path <b>&lt;the path to xls file of raw data&gt;</b> \
+        --raw_dataset_path <b>&lt;the path to csv file of raw data&gt;</b> \
         --db_folder_path <b>&lt;the path to save Blast database&gt;</b> \
         --db_name <b>&lt;the name to assign for Blast database&gt;</b> \
         --if_reversed_data 1 \
@@ -112,27 +112,25 @@ Generate Feature-Enriched ΔΔG Data
     <p></p>
     (1). <span class="keyword-highlight">raw_dataset_path</span>
     <p></p>
-    This parameter indicates that you need to provide the path to an <span class="keyword-highlight">xls</span> file, which contains the raw data you want to use to generate ΔΔG feature set.
+    This parameter indicates that you need to provide the path to a <span class="keyword-highlight">csv</span> file, which contains the raw data you want to use to generate ΔΔG feature set.
     <p></p>
-    In the path <span class="keyword-highlight">DDGWizard/src</span>, there is a sample file <span class="keyword-highlight">sample.xls</span> that you can use directly for testing and as a reference.
+    In the path <span class="keyword-highlight">DDGWizard/src</span>, there is a sample file <span class="keyword-highlight">Sample.csv</span> that you can use directly for testing and as a reference.
     <p></p>
-    This file is similar to the <span class="keyword-highlight">sample_pred.xls</span> file used for prediction.
-    <p></p>
-    We also list some of the contents of this file here, and provide detailed descriptions of each column's attributes in the table file:
+    We list some of the contents of this file here, and provide detailed descriptions of each column's attributes in the table file:
     <p></p>
     <div>
 
-+-------------+---------------------+------------------+----------------+----------+------------------+
-| PDB         | Variation           | Chain            | ddG            |   pH     |  T               |
-+=============+=====================+==================+================+==========+==================+
-| 1AAR        | K6E                 | A                | 0.53           |   5      |  25              |
-+-------------+---------------------+------------------+----------------+----------+------------------+
-| 1AAR        | K6Q                 | A                | 0.26           |   5      |  25              |
-+-------------+---------------------+------------------+----------------+----------+------------------+
-| 1AAR        | H68E                | A                | 0.77           |   5      |  25              |
-+-------------+---------------------+------------------+----------------+----------+------------------+
-| ...         | ...                 | ...              |   ...          |  ...     |  ...             |
-+-------------+---------------------+------------------+----------------+----------+------------------+
++-------------+---------------------------+--------------------+----------------+----------+------------------+
+| PDB         | Amino Acid Substitution   | Chain ID           | ddG            |   pH     |  T               |
++=============+===========================+====================+================+==========+==================+
+| 1AAR        | K6E                       | A                  | 0.53           |   5      |  25              |
++-------------+---------------------------+--------------------+----------------+----------+------------------+
+| 1AAR        | K6Q                       | A                  | 0.26           |   5      |  25              |
++-------------+---------------------------+--------------------+----------------+----------+------------------+
+| 1AAR        | H68E                      | A                  | 0.77           |   5      |  25              |
++-------------+---------------------------+--------------------+----------------+----------+------------------+
+| ...         | ...                       | ...                |   ...          |  ...     |  ...             |
++-------------+---------------------------+--------------------+----------------+----------+------------------+
 
 .. raw:: html
 
@@ -140,17 +138,17 @@ Generate Feature-Enriched ΔΔG Data
     Description of attributes for each column in the table file:
     <div style="margin-left: 40px;">
     <p></p>
-    a. <span class="keyword-highlight">PDB</span>: This attribute requires to provide a <span class="keyword-highlight">PDB</span> identifier sourced from <a href="https://www.rcsb.org/">the RCSB database</a>. In the feature calculation pipeline of DDGWizard, the program does not support the use of user-provided <span class="keyword-highlight">PDB</span> files. Users need to provide a <span class="keyword-highlight">PDB</span> identifier that can be searched on <a href="https://www.rcsb.org/">the RCSB database</a> as the name of the predicted protein. The program will automatically download the <span class="keyword-highlight">PDB</span> file from <a href="https://www.rcsb.org/">the RCSB database</a> according to this <span class="keyword-highlight">PDB</span> ID.
+    a. <span class="keyword-highlight">PDB</span>: This attribute requires to provide a <span class="keyword-highlight">PDB</span> identifier sourced from <a href="https://www.rcsb.org/">the RCSB database</a>. Using the <span class="keyword-highlight">PDB</span> identifier program can automatically download the <span class="keyword-highlight">PDB</span> file.
     <p></p>
-    b. <span class="keyword-highlight">Variation</span>: Specify the specific mutation for which you want to generate features, including the mutation site information and amino acid substitution details.
+    b. <span class="keyword-highlight">Amino Acid Substitution</span>: It consists of one-letter code of the wild-type amino acid, the sequential number of the mutation site, and the code of the mutant amino acid, for describing substitution of amino acids caused by the mutation. For example, K6Q represents a substitution where lysine at the 6th position of protein sequence is substituted with glutamine.
     <p></p>
-    c. <span class="keyword-highlight">Chain</span>: Specify the chain identifier of the protein where the specific mutation are located.
+    c. <span class="keyword-highlight">Chain ID</span>: Indicate the protein chain where the mutation site is located.
     <p></p>
-    d. <span class="keyword-highlight">ddG</span>: This attribute requires to provide the experimental ΔΔG values of the raw data. For users with machine learning needs, this value can serve as the regression target. If users only require generating features, this attribute can be set to any numerical value without affecting the generation of other features.
+    d. <span class="keyword-highlight">ddG</span>: Require to provide the ΔΔG values of users' own raw dataset. For users with machine learning needs, this value can serve as the regression target. If users only require generating features, this attribute can be set to any numerical value without affecting the generation of other features.
     <p></p>
-    e. <span class="keyword-highlight">pH</span>: Specify at which pH you want to predict the ΔΔG for the mutation. If you have no specific requirements or preferences regarding pH, you can simply specify it as 7.
+    e. <span class="keyword-highlight">pH</span>: Specify at which pH the mutation occurs.
     <p></p>
-    f. <span class="keyword-highlight">T</span>: Specify at which temperature you want to predict the ΔΔG for the mutation. If you have no specific requirements or preferences regarding temperature, you can simply specify it as 25.
+    f. <span class="keyword-highlight">T</span>: Specify at which temperature the mutation occurs.
     <p></p>
     </div>
     </div>
@@ -159,7 +157,7 @@ Generate Feature-Enriched ΔΔG Data
 
     <div style="text-align: justify;">
     (2). <span class="keyword-highlight">--db_folder_path</span>
-    This parameter indicates the folder path of the Blast database that you have prepared.
+    This parameter indicates the folder path of the Blast database that user have prepared.
     <p></p>
     </div>
 
@@ -167,7 +165,7 @@ Generate Feature-Enriched ΔΔG Data
 
     <div style="text-align: justify;">
     (3). <span class="keyword-highlight">--db_name</span>
-    This parameter indicates the name of the Blast database that you have prepared.
+    This parameter indicates the name of the Blast database that user have prepared.
     <p></p>
     </div>
 
@@ -175,7 +173,7 @@ Generate Feature-Enriched ΔΔG Data
 
     <div style="text-align: justify;">
     (4). <span class="keyword-highlight">--if_reversed_data</span>
-    This parameter requires you to provide a value of 0 or 1. The value of 0 means only predicting the ΔΔG for the mutations provided in the file, while the value of 1 means also predicting the ΔΔG for the reverse mutations of the mutations provided.
+    This parameter requires user to provide a value of 0 or 1. The value of 0 means only generating features for the direct mutation, while the value of 1 means also generating the features for the reverse mutations of the mutations provided.
     <p></p>
     </div>
 
@@ -183,7 +181,7 @@ Generate Feature-Enriched ΔΔG Data
 
     <div style="text-align: justify;">
     (5). <span class="keyword-highlight">--blast_process_num</span>
-    This parameter requires you to provide an integer greater than 0 and less than 200. It represents the number of processes (multiprocessing) DDGWizard will use for sequence alignment.
+    This parameter requires user to provide an integer greater than 0 and less than 200. It represents the number of processes (multiprocessing) DDGWizard will use for sequence alignment.
     <p></p>
     </div>
 
@@ -199,7 +197,7 @@ Generate Feature-Enriched ΔΔG Data
 
     <div style="text-align: justify;">
     (7). <span class="keyword-highlight">--process_num</span>
-    This parameter requires you to provide an integer greater than 0 and less than 200. It represents the number of processes (multiprocessing) DDGWizard will use for calculating features (Different from sequence alignment).
+    This parameter requires user to provide an integer greater than 0 and less than 200. It represents the number of processes (multiprocessing) DDGWizard will use for generating features.
     <p></p>
     </div>
 
@@ -207,7 +205,7 @@ Generate Feature-Enriched ΔΔG Data
 
     <div style="text-align: justify;">
     (8). <span class="keyword-highlight">--container_type</span>
-    This parameter requires you to provide a value of <span class="keyword-highlight">D</span> or <span class="keyword-highlight">S</span> or <span class="keyword-highlight">-</span>. The value of <span class="keyword-highlight">D</span> means using <span class="keyword-highlight">Docker</span> as container system, the value of <span class="keyword-highlight">S</span> means using <span class="keyword-highlight">Singularity</span> as container system, and the value of <span class="keyword-highlight">-</span> means skipping running PROFbval.
+    This parameter requires user to provide a value of <span class="keyword-highlight">D</span> or <span class="keyword-highlight">S</span> or <span class="keyword-highlight">-</span> (default). The value of <span class="keyword-highlight">D</span> means using <span class="keyword-highlight">Docker</span> as container system, the value of <span class="keyword-highlight">S</span> means using <span class="keyword-highlight">Singularity</span> as container system, and the value of <span class="keyword-highlight">-</span> means skipping running PROFbval.
     <p></p>
     </div>
 
@@ -215,7 +213,7 @@ Generate Feature-Enriched ΔΔG Data
 
     <div style="text-align: justify;">
     <h4>4. Output</h4>
-    There will be an output <span class="keyword-highlight">csv</span> file <span class="keyword-highlight">features_table.csv</span> located in <span class="keyword-highlight">DDGWizard/src/Features_Table/</span>, which will record complete generated features.
+    There will be an output <span class="keyword-highlight">csv</span> file <span class="keyword-highlight">features_table.csv</span> located in <span class="keyword-highlight">DDGWizard/src/Feature_Res/</span>, which will record complete generated features.
     <p></p>
     </div>
 
@@ -232,11 +230,11 @@ Generate Feature-Enriched ΔΔG Data
     <div style="text-align: justify;">
     (1). When running DDGWizard, you need to <span class="keyword-highlight">cd</span> to the top-level directory of the program to execute the program.
     <p></p>
-    (2). DDGWizard supports multi-process handling. If you wish to run multiple instances of DDGWizard to fully utilize your computer's resources, we recommend using the multi-process parameters provided by DDGWizard.
+    (2). DDGWizard supports multi-process handling itself. If you wish to run multiple instances of DDGWizard to fully utilize your computer's resources, we recommend using the multi-process parameters provided by DDGWizard.
     <p></p>
-    <b>Avoid running multiple instances of DDGWizard from the same folder,</b> as the program synchronizes files within the folder, which can cause synchronization errors.
+    We don't recommend to achieve multi-process handling of DDGWizard by user themselves.
     <p></p>
-    If you need to run multiple instances at the same time by yourself, <b>please make multiple copies of the DDGWizard folder and run each instance separately in its own folder.</b>
+    If user need to run multiple instances of DDGWizard at the same time by themselves, please avoid running multiple instances of DDGWizard from the same folder, as the program synchronizes files within the folder, which can cause synchronization errors. <b>Please make multiple copies of the DDGWizard folder and run each instance separately in its own folder.</b>
     <p></p>
     (3). <b>Do not place your files in the top-level folder of DDGWizard.</b> DDGWizard will automatically clean files in the top-level folder to maintain multi-process synchronization.
     <p></p>

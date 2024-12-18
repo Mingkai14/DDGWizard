@@ -543,7 +543,7 @@ def Detail_Extraction(obj:Feature_Object,basic_list:list,task_count:int):
     Log(f'Task {task_count}, ID {obj.ID}: Features Extraction 7: Running PROFbval in container to get B-factor')
     print(f'Task {task_count}, ID {obj.ID}: Features Extraction 7: Running PROFbval in container to get B-factor')
     if Scripts.Global_Value.D_or_S != '-':
-        if (Scripts.Global_Value.D_or_S=='S' and os.path.isfile(Singularity_Container_Path)) or (Scripts.Global_Value.D_or_S=='D' and os.path.isfile('./Src/Prof_Source/myprof.tar')):
+        if (Scripts.Global_Value.D_or_S=='S' and os.path.isfile(Singularity_Container_Path)) or (Scripts.Global_Value.D_or_S=='D' and os.path.isfile('./src/Prof_Source/myprof.tar')):
             res=Compute_B_Factor(obj.WT_Seq,obj.Chain_ID_of_Mut,TMP_Path,f'prof_res_{obj.ID}_WT',obj.WT_PSI_BLAST_Path,Main_Location,obj.True_Loc_of_Mutation,obj.WT_Amino_Acid_short)
             if res is False:
                 error_obj.Something_Wrong(Detail_Extraction.__name__)

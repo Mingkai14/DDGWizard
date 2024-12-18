@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'DDGWizard Tutorial'
-copyright = '2024, Mingkai'
+copyright = '2024, DDGWizard'
 author = 'Mingkai'
 release = '1.0'
 

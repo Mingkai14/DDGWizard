@@ -27,7 +27,7 @@ def XGBoostRegression_Predict(csv_path,model_path,output_path):
     model = load_pkl(model_path+'predictor.pkl')
     y_pred = model.predict(fea)
     res_dict={}
-    if not scripts.Global_Value.Is_Use_Reverse_Data:
+    if not Scripts.Global_Value.Is_Use_Reverse_Data:
         for i in range(len(y_pred)):
             res_dict[ids[i]]=['forward',y_pred[i]]
 

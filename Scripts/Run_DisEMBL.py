@@ -1,5 +1,5 @@
 try:
-    from Bin.DisEMBL_1_4.DisEMBL import runDisEMBLpipeline
+    from bin.DisEMBL_1_4.DisEMBL import runDisEMBLpipeline
 except:
     pass
 # from Utils import Clean_Main_Directory
