@@ -16,6 +16,7 @@ DDGWizard Tutorial
    Predict_ddg
    Predict_ddg_of_sm
    DDGWizard_dataset
+   Issue_management
 
 
 
