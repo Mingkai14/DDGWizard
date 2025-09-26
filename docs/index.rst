@@ -10,13 +10,13 @@ DDGWizard Tutorial
    :maxdepth: 2
    :caption: Contents:
 
-   Introduction
-   Installation_Guide
-   Generate_features
-   Predict_ddg
-   Predict_ddg_of_sm
-   DDGWizard_dataset
-   Issue_management
+   introduction
+   installation_guide
+   generate_features
+   predict_ddg
+   predict_ddg_of_sm
+   ddgwizard_dataset
+   issue_management
 
 
 
